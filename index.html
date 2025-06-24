@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKE-32</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PEKPPP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <!-- New Theme Settings Nav Item -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#themeSettingsModal">Theme</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-4">
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">Aspek 1</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">Aspek 2</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">Aspek 3</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="false">Aspek 4</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab5-tab" data-bs-toggle="tab" data-bs-target="#tab5" type="button" role="tab" aria-controls="tab5" aria-selected="false">Aspek 5</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab6-tab" data-bs-toggle="tab" data-bs-target="#tab6" type="button" role="tab" aria-controls="tab6" aria-selected="false">Aspek 6</button>
+            </li>
+        </ul>
+
+        <!-- Tab Content - Content will be dynamically loaded by JavaScript -->
+        <div class="tab-content border border-top-0 p-3" id="myTabContent">
+            <!-- Tab 1 Content Container -->
+            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                <h3>Aspek 1. Kebijakan Pelayanan Publik</h3>
+                <br>
+                <div class="accordion" id="accordionTab1">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading1Tab1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1Tab1" aria-expanded="true" aria-controls="collapse1Tab1">
+                                1. Tersedia Standar Pelayanan (SP) sesuai dengan ketentuan peraturan perundang-undangan yang berlaku
+                            </button>
+                        </h2>
+                        <div id="collapse1Tab1" class="accordion-collapse collapse" aria-labelledby="heading1Tab1" data-bs-parent="#accordionTab1">
+                            <div class="accordion-body">
+                                <br>
+                                <ul>
+                                    <li>Setiap Unit Lokus wajib menyusun Standar Pelayanan sebagai pedoman penyelenggaraan pelayanan dan acuan penilaian kualitas pelayanan.</li>
+                                    <li>Standar Pelayanan setelah disusun dan dibahas dengan masyarakat wajib untuk ditetapkan, agar dapat memiliki kekuatan hukum.</li>
+                                    <li>Penetapan Standar Pelayanan dilakukan minimal oleh pimpinan Unit Penyelenggara Pelayanan.</li>
+                                    <li>Standar Pelayanan terdiri atas 14 komponen, dimana 6 diantaranya merupakan komponen service delivery, dan 8 komponen lainnya merupakan komponen manufacturing. Komponen service delivery wajib dipublikasikan pada media publikasi yang dimiliki Unit Lokus.</li>
+                                    <li>Yang dimaksud penetapan Standar Pelayanan untuk sebagian jenis pelayanan adalah penetapan SP yang belum mencakup seluruh jenis pelayanan yang ada dalam suatu unit pelayanan.</li>
+                                    <li>Penyusunan Standar Pelayanan dapat mengacu pada Peraturan Menteri Nomor 15 Tahun 2014.</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading2Tab1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2Tab1" aria-expanded="false" aria-controls="collapse2Tab1">
+                                2. Proses penyusunan dan perubahan SP telah melibatkan unsur masyarakat.
+                            </button>
+                        </h2>
+                        <div id="collapse2Tab1" class="accordion-collapse collapse" aria-labelledby="heading2Tab1" data-bs-parent="#accordionTab1">
+                            <div class="accordion-body">
+                                <br>
+                                <ul>
+                                    <li>Penyusunan dan penetapan SP wajib melibatkan warga negara maupun penduduk sebagai orang perorangan, kelompok, maupun badan hukum yang berkedudukan sebagai penerima manfaat pelayanan publik, baik secara langsung maupun tidak langsung. Pihak terkait merupakan pihak yang dianggap kompeten dalam memberikan masukan terhadap penyusunan SP.</li>
+                                    <li>Masyarakat yang dilibatkan dalam penyusunan SP mewakili berbagai unsur dan profesi:</li>
+                                </ul> 
+                                <ol>
+                                    <li>Masyarakat Pengguna Layanan,</li> 
+                                    <li>Ahli/Praktisi/Akademisi,</li> 
+                                    <li>Instansi Terkait,</li> 
+                                    <li>Organisasi Masyarakat Sipil, dan</li> 
+                                    <li>Media Massa.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading3Tab1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3Tab1" aria-expanded="false" aria-controls="collapse3Tab1">
+                                3. Jumlah media publikasi untuk komponen service delivery.
+                            </button>
+                        </h2>
+                        <div id="collapse3Tab1" class="accordion-collapse collapse" aria-labelledby="heading3Tab1" data-bs-parent="#accordionTab1">
+                            <div class="accordion-body">
+                                <br>
+                                <p>SP yang ditetapkan wajib dipublikasikan pada media publikasi yang tersedia, dan dapat diakses dengan mudah oleh masyarakat. Media Publikasi tersebut dapat berupa:</p>
+                                <ol>
+                                <li>Media Cetak/ Non Elektronik. Media yang termasuk didalamnya yakni brosur, leaflet, majalah, pamphlet, buku saku, papan pengumuman dan sejenisnya.</li>
+                                <li>Media Elektronik. Media yang termasuk didalamnya yakni TV, layar monitor, kios-K, link publikasi, dan sejenisnya.</li>
+                                <li>Media sosial. Media yang termasuk didalamnya yakni Facebook, Instagram, Twitter, Whatsapp, dan sejenisnya.</li>
+                                <li>Website. Media yang termasuk di dalamnya yakni website, dan subsite.</li>
+                                <li>Aplikasi yang bisa diunduh, yaitu suatu aplikasi yang dikembangkan UPP yang dapat diunduh oleh pengguna layanan, baik berbasis android, IOS, maupun OS lainnya.</li>
+                                <li>SIPP Nasional, yaitu suatu sistem nasional yang disediakan sebagai media publikasi dan informasi terkait pelayanan publik.</li>
+                                <li>Papan reklame: Videotron/billboard/baliho/media sejenis lainnya.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading4Tab1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4Tab1" aria-expanded="false" aria-controls="collapse4Tab1">
+                                4. Telah dilakukan peninjauan ulang secara berkala terhadap Standar Pelayanan.
+                            </button>
+                        </h2>
+                        <div id="collapse4Tab1" class="accordion-collapse collapse" aria-labelledby="heading4Tab1" data-bs-parent="#accordionTab1">
+                            <div class="accordion-body">
+                                <br>
+                                <p>Standar Pelayanan yang sudah ditetapkan wajib ditinjau ulang sesuai ketentuan pasal 33 pada PP 96/2012, dan hasil peninjauan ulang dapat digunakan Unit Lokus untuk sebagai dasar tetap menjalankan SP yang sudah dibuat atau melakukan perubahan SP.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 5 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading5Tab1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5Tab1" aria-expanded="false" aria-controls="collapse5Tab1">
+                                5. Pemenuhan siklus Maklumat Pelayanan (ketersediaan, penetapan, dan publikasi)
+                            </button>
+                        </h2>
+                        <div id="collapse5Tab1" class="accordion-collapse collapse" aria-labelledby="heading5Tab1" data-bs-parent="#accordionTab1">
+                            <div class="accordion-body">
+                                <br>
+                                <p>Maklumat Pelayanan adalah pernyataan tertulis yang berisi keseluruhan rincian kewajiban dan janji pemberi layanan untuk memenuhi SP, serta kesiapan menerima sanksi bila melanggar sesuai dengan peraturan perundang-undangan. Hal- hal yang perlu dimuat dalam maklumat pelayanan adalah:</p>
+                                <ol>
+                                <li>Pernyataan janji dan kesanggupan untuk melaksanakan pelayanan sesuai dengan standar pelayanan;</li>
+                                <li>Pernyataan memberikan pelayanan sesuai dengan kewajiban dan akan melakukan perbaikan secara terus menerus;</li>
+                                <li>Pernyataan kesediaan untuk menerima sanksi, dan/atau memberikan kompensasi apabila pelayanan yang diberikan tidak sesuai standar.</li>
+                                </ol>
+
+                                <p>Maklumat Pelayanan dapat diakses melalui publikasi di:</p>
+                                <ol>
+                                <li>Media Cetak/ Non Elektronik. Media yang termasuk didalamnya yakni brosur, leaflet, majalah, pamphlet, buku saku, papan pengumuman dan sejenisnya;</li>
+                                <li>Media Elektronik. Media yang termasuk didalamnya yakni TV, layar monitor, kiosK, dan sejenisnya.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 6 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading6Tab1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6Tab1" aria-expanded="false" aria-controls="collapse6Tab1">
+                                6. SKM yang dilaksanakan sesuai dengan PermenPANRB.
+                            </button>
+                        </h2>
+                        <div id="collapse6Tab1" class="accordion-collapse collapse" aria-labelledby="heading6Tab1" data-bs-parent="#accordionTab1">
+                            <div class="accordion-body">
+                                <br>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 7 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading7Tab1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7Tab1" aria-expanded="false" aria-controls="collapse7Tab1">
+                                7. Jumlah media publikasi hasil SKM.
+                            </button>
+                        </h2>
+                        <div id="collapse7Tab1" class="accordion-collapse collapse" aria-labelledby="heading7Tab1" data-bs-parent="#accordionTab1">
+                            <div class="accordion-body">
+                                <br>
+                                <p>
+                                Publikasi informasi SKM adalah tersedianya informasi terkait metode, proses, dan hasil SKM untuk diketahui seluruh lapisan masyarakat. Media Publikasi dapat diakses melalui:</p>
+                                <ol>
+                                    <li>Media Cetak/ Non Elektronik. Media yang termasuk didalamnya yakni brosur, leaflet, majalah, pamphlet, buku saku, papan pengumuman dan sejenisnya.</li>
+                                <li>Media Elektronik. Media yang termasuk didalamnya yakni TV, layar monitor, kiosK, dan sejenisnya.</li>
+                                <li>Media sosial. Media yang termasuk didalamnya yakni Facebook, Instagram, Twitter, Whatsapp, dan sejenisnya.</li>
+                                <li>Website. Media yang termasuk di dalamnya yakni website, dan subsite.</li>
+                                <li>Aplikasi yang bisa diunduh.</li>
+                                <li>Papan reklame: Videotron/ billboard/ baliho/ media sejenis lainnya.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 8 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading8Tab1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8Tab1" aria-expanded="false" aria-controls="collapse8Tab1">
+                                8. Persentase rencana tindak lanjut hasil SKM yang telah selesai ditindaklanjuti.
+                            </button>
+                        </h2>
+                        <div id="collapse8Tab1" class="accordion-collapse collapse" aria-labelledby="heading8Tab1" data-bs-parent="#accordionTab1">
+                            <div class="accordion-body">
+                                <p>
+                                    Tindak lanjut Hasil SKM adalah hasil survei yang diolah, dianalisis yang menghasilkan rekomendasi yang kemudian dijadikan referensi kebijakan perbaikan layanan. 
+                                </p>
+                                <p>    
+                                    Hasil SKM seluruh jenis pelayanan dalam bentuk saran
+                                    dan rekomendasi ditindaklanjuti dan dipergunakan sebagai acuan perbaikan layanan dan kebijakan layanan oleh pimpinan daerah maupun pimpinan penyelenggara.
+                                </p>
+                                <p>
+                                    Ruang lingkup SKM meliputi: persyaratan, prosedur, waktu, produk pelayanan, biaya, kompetensi, perilaku dan maklumat pelayanan serta pengelolaan pengaduan (merujuk pada peraturan Menteri yang berlaku).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 9 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading9Tab1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9Tab1" aria-expanded="false" aria-controls="collapse9Tab1">
+                                9. Kecepatan tindak lanjut hasil SKM seluruh jenis pelayanan.
+                            </button>
+                        </h2>
+                        <div id="collapse9Tab1" class="accordion-collapse collapse" aria-labelledby="heading9Tab1" data-bs-parent="#accordionTab1">
+                            <div class="accordion-body">
+                                <p>
+                                    Kecepatan tindak lanjut rekomendasi hasil SKM guna melihat keseriusan UPP dalam melaksanakan SKM. Apakah hasil SKM segera ditindaklanjuti atau tidak. 
+                                </p>
+                                <p>
+                                    Adapun kecepatan tindak lanjut ini dilihat dari laporan pelaksanaan SKM oleh unit pelayanan pada 2 tahun terakhir serta laporan tindak lanjutnya.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2 Content Container -->
+            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                <h3>Aspek 2. Profesionalisme SDM</h3>
+                <div class="accordion" id="accordionTab2">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading1Tab2">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1Tab2" aria-expanded="true" aria-controls="collapse1Tab2">
+                                10. Tersedia waktu pelayanan yang memudahkan pengguna layanan.
+                            </button>
+                        </h2>
+                        <div id="collapse1Tab2" class="accordion-collapse collapse" aria-labelledby="heading1Tab2" data-bs-parent="#accordionTab2">
+                            <div class="accordion-body">
+                                <br>
+                                <p>
+                                    Bentuk penyesuaian waktu pelayanan dapat berupa:
+                                </p>
+                                <ol>
+                                    <li>Memiliki kebijakan jam pelayanan/kerja berupa surat keputusan, peraturan yang berlaku, dan sejenisnya.</li>
+                                    <li>Tidak ada jeda pelayanan yang berarti istirahat pegawai dilakukan secara bergilir (shift) yang dapat dibuktikan dari publikasi jam layanan kepada masyarakat.</li>
+                                    <li>Penambahan waktu layanan di luar jam pelayanan yang sudah ditentukan (masih di hari kerja).</li>
+                                    <li>Penambahan waktu layanan di luar hari kerja namun dalam kondisi tertentu (Misal: Pembukaan CPNS, LAPOR SPT Tahunan).</li>
+                                    <li>Penambahan waktu layanan di luar hari kerja namun secara rutin.</li>
+                                    <li>Layanan 24 Jam: layanan yang merupakan inti pelayanan dan pendaftaran. Tidak termasuk layanan konsultasi dan informasi.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading2Tab2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2Tab2" aria-expanded="false" aria-controls="collapse2Tab2">
+                                11. Tersedia Kode Etik dan Kode Perilaku Pelaksana dan/atau Budaya Pelayanan dilingkungan instansi.
+                            </button>
+                        </h2>
+                        <div id="collapse2Tab2" class="accordion-collapse collapse" aria-labelledby="heading2Tab2" data-bs-parent="#accordionTab2">
+                            <div class="accordion-body">
+                                <br>
+                                <p>
+                                Aturan Perilaku dan Kode Etik Pelaksana Pelayanan adalah pedoman sikap, perilaku, perbuatan, tulisan dan ucapan pegawai, serta hak dan kewajiban pelaksana layanan dalam menjalankan tugas-tugas pelayanan kepada pengguna layanan. Unsur kode etik meliputi:</p>
+                                <ol>
+                                <li>Hak dan kewajiban,</li> 
+                                <li>larangan KKN,</li> 
+                                <li>larangan diskriminasi,</li> 
+                                <li>sanksi,</li> 
+                                <li>penghargaan.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading3Tab2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3Tab2" aria-expanded="false" aria-controls="collapse3Tab2">
+                                12. Tersedia mekanisme yang dibangun untuk menjaga dan meningkatkan motivasi kerja Pelaksana pelayanan.
+                            </button>
+                        </h2>
+                        <div id="collapse3Tab2" class="accordion-collapse collapse" aria-labelledby="heading3Tab2" data-bs-parent="#accordionTab2">
+                            <div class="accordion-body">
+                                <br>
+                                <p>
+                                Motivasi Kerja dapat diartikan sebagai daya pendorong/penggerak yang menciptakan kemauan Pelaksana pelayanan untuk bekerja secara efektif, dan terintegrasi dengan segala daya upaya nya untuk menciptakan kepuasan pengguna layanan. Jenis mekanisme untuk meningkatkan motivasi kerja dapat berupa:</p>
+                                <ol>
+                                <li>pemberian penghargaan;</li>
+                                <li>pemberian kesempatan untuk mengikuti diklat;</li>
+                                <li>pengembangan kapasitas melalui kesempatan mengikuti program beasiswa;</li>
+                                <li>program konseling;</li>
+                                <li>program tim/capacity building;</li>
+                                <li>mekanisme lainnya yang dapat meningkatkan motivasi kerja pegawai.</li>
+                                </ol>
+                                <p>
+                                Bukti dukung yang disampaikan paling tidak dalam jangka waktu 1 tahun terakhir.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading4Tab2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4Tab2" aria-expanded="false" aria-controls="collapse4Tab2">
+                                13. Tersedia kriteria pemberian penghargaan bagi pegawai yang berprestasi.
+                            </button>
+                        </h2>
+                        <div id="collapse4Tab2" class="accordion-collapse collapse" aria-labelledby="heading4Tab2" data-bs-parent="#accordionTab2">
+                            <div class="accordion-body">
+                                <br>
+                                <p>
+                                Dalam melaksanakan kegiatan pemberian penghargaan, ada kriteria-kriteria tertentu yang digunakan unit layanan sebagai dasar pelaksanaan kegiatan. Kriteria pemberian penghargaan adalah ukuran/indikator yang digunakan oleh UPP dalam menilai/menentukan prestasi petugas pelayanan yang dapat terdiri dari unsur:</p>
+                                <ol>
+                                <li>Kehadiran;</li> 
+                                <li>Kinerja: kualitas hasil kerja yaitu menyelesaikan tugas sesuai dengan ketentuan yang diberikan atasan;</li> 
+                                <li>Kerja sama;</li>
+                                <li>Inovatif/kreatif: kemampuan mengeluarkan ide;</li>
+                                <li>Penampilan : penggunaan atribut, pakaian, dll yang sudah ditetapkan;</li>
+                                <li>Tidak pernah menerima komplain dari pengguna layanan yang bersifat personal.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading5Tab2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5Tab2" aria-expanded="false" aria-controls="collapse5Tab2">
+                                Accordion Item #5 for Tab Two
+                            </button>
+                        </h2>
+                        <div id="collapse5Tab2" class="accordion-collapse collapse" aria-labelledby="heading5Tab2" data-bs-parent="#accordionTab2">
+                            <div class="accordion-body">
+                                <p>This is the body for the fifth accordion item in Tab Two.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab2" data-accordion-index="4" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab2" data-accordion-index="4" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab2" data-accordion-index="4" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3 Content Container -->
+            <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+                <h3>Content for Tab Three</h3>
+                <div class="accordion" id="accordionTab3">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading1Tab3">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1Tab3" aria-expanded="true" aria-controls="collapse1Tab3">
+                                Accordion Item #1 for Tab Three
+                            </button>
+                        </h2>
+                        <div id="collapse1Tab3" class="accordion-collapse collapse show" aria-labelledby="heading1Tab3" data-bs-parent="#accordionTab3">
+                            <div class="accordion-body">
+                                <p>This is the body for the first accordion item in Tab Three.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="0" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="0" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="0" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading2Tab3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2Tab3" aria-expanded="false" aria-controls="collapse2Tab3">
+                                Accordion Item #2 for Tab Three
+                            </button>
+                        </h2>
+                        <div id="collapse2Tab3" class="accordion-collapse collapse" aria-labelledby="heading2Tab3" data-bs-parent="#accordionTab3">
+                            <div class="accordion-body">
+                                <p>This is the body for the second accordion item in Tab Three.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="1" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="1" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="1" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading3Tab3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3Tab3" aria-expanded="false" aria-controls="collapse3Tab3">
+                                Accordion Item #3 for Tab Three
+                            </button>
+                        </h2>
+                        <div id="collapse3Tab3" class="accordion-collapse collapse" aria-labelledby="heading3Tab3" data-bs-parent="#accordionTab3">
+                            <div class="accordion-body">
+                                <p>This is the body for the third accordion item in Tab Three.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="2" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="2" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="2" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading4Tab3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4Tab3" aria-expanded="false" aria-controls="collapse4Tab3">
+                                Accordion Item #4 for Tab Three
+                            </button>
+                        </h2>
+                        <div id="collapse4Tab3" class="accordion-collapse collapse" aria-labelledby="heading4Tab3" data-bs-parent="#accordionTab3">
+                            <div class="accordion-body">
+                                <p>This is the body for the fourth accordion item in Tab Three.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="3" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="3" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="3" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading5Tab3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5Tab3" aria-expanded="false" aria-controls="collapse5Tab3">
+                                Accordion Item #5 for Tab Three
+                            </button>
+                        </h2>
+                        <div id="collapse5Tab3" class="accordion-collapse collapse" aria-labelledby="heading5Tab3" data-bs-parent="#accordionTab3">
+                            <div class="accordion-body">
+                                <p>This is the body for the fifth accordion item in Tab Three.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="4" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="4" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab3" data-accordion-index="4" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4 Content Container -->
+            <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+                <h3>Content for Tab Four</h3>
+                <div class="accordion" id="accordionTab4">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading1Tab4">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1Tab4" aria-expanded="true" aria-controls="collapse1Tab4">
+                                Accordion Item #1 for Tab Four
+                            </button>
+                        </h2>
+                        <div id="collapse1Tab4" class="accordion-collapse collapse show" aria-labelledby="heading1Tab4" data-bs-parent="#accordionTab4">
+                            <div class="accordion-body">
+                                <p>This is the body for the first accordion item in Tab Four.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="0" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="0" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="0" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading2Tab4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2Tab4" aria-expanded="false" aria-controls="collapse2Tab4">
+                                Accordion Item #2 for Tab Four
+                            </button>
+                        </h2>
+                        <div id="collapse2Tab4" class="accordion-collapse collapse" aria-labelledby="heading2Tab4" data-bs-parent="#accordionTab4">
+                            <div class="accordion-body">
+                                <p>This is the body for the second accordion item in Tab Four.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="1" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="1" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="1" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading3Tab4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3Tab4" aria-expanded="false" aria-controls="collapse3Tab4">
+                                Accordion Item #3 for Tab Four
+                            </button>
+                        </h2>
+                        <div id="collapse3Tab4" class="accordion-collapse collapse" aria-labelledby="heading3Tab4" data-bs-parent="#accordionTab4">
+                            <div class="accordion-body">
+                                <p>This is the body for the third accordion item in Tab Four.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="2" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="2" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="2" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading4Tab4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4Tab4" aria-expanded="false" aria-controls="collapse4Tab4">
+                                Accordion Item #4 for Tab Four
+                            </button>
+                        </h2>
+                        <div id="collapse4Tab4" class="accordion-collapse collapse" aria-labelledby="heading4Tab4" data-bs-parent="#accordionTab4">
+                            <div class="accordion-body">
+                                <p>This is the body for the fourth accordion item in Tab Four.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="3" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="3" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="3" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading5Tab4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5Tab4" aria-expanded="false" aria-controls="collapse5Tab4">
+                                Accordion Item #5 for Tab Four
+                            </button>
+                        </h2>
+                        <div id="collapse5Tab4" class="accordion-collapse collapse" aria-labelledby="heading5Tab4" data-bs-parent="#accordionTab4">
+                            <div class="accordion-body">
+                                <p>This is the body for the fifth accordion item in Tab Four.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="4" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="4" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab4" data-accordion-index="4" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 5 Content Container -->
+            <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
+                <h3>Content for Tab Five</h3>
+                <div class="accordion" id="accordionTab5">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading1Tab5">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1Tab5" aria-expanded="true" aria-controls="collapse1Tab5">
+                                Accordion Item #1 for Tab Five
+                            </button>
+                        </h2>
+                        <div id="collapse1Tab5" class="accordion-collapse collapse show" aria-labelledby="heading1Tab5" data-bs-parent="#accordionTab5">
+                            <div class="accordion-body">
+                                <p>This is the body for the first accordion item in Tab Five.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="0" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="0" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="0" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading2Tab5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2Tab5" aria-expanded="false" aria-controls="collapse2Tab5">
+                                Accordion Item #2 for Tab Five
+                            </button>
+                        </h2>
+                        <div id="collapse2Tab5" class="accordion-collapse collapse" aria-labelledby="heading2Tab5" data-bs-parent="#accordionTab5">
+                            <div class="accordion-body">
+                                <p>This is the body for the second accordion item in Tab Five.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="1" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="1" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="1" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading3Tab5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3Tab5" aria-expanded="false" aria-controls="collapse3Tab5">
+                                Accordion Item #3 for Tab Five
+                            </button>
+                        </h2>
+                        <div id="collapse3Tab5" class="accordion-collapse collapse" aria-labelledby="heading3Tab5" data-bs-parent="#accordionTab5">
+                            <div class="accordion-body">
+                                <p>This is the body for the third accordion item in Tab Five.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="2" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="2" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="2" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading4Tab5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4Tab5" aria-expanded="false" aria-controls="collapse4Tab5">
+                                Accordion Item #4 for Tab Five
+                            </button>
+                        </h2>
+                        <div id="collapse4Tab5" class="accordion-collapse collapse" aria-labelledby="heading4Tab5" data-bs-parent="#accordionTab5">
+                            <div class="accordion-body">
+                                <p>This is the body for the fourth accordion item in Tab Five.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="3" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="3" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="3" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading5Tab5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5Tab5" aria-expanded="false" aria-controls="collapse5Tab5">
+                                Accordion Item #5 for Tab Five
+                            </button>
+                        </h2>
+                        <div id="collapse5Tab5" class="accordion-collapse collapse" aria-labelledby="heading5Tab5" data-bs-parent="#accordionTab5">
+                            <div class="accordion-body">
+                                <p>This is the body for the fifth accordion item in Tab Five.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="4" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="4" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab5" data-accordion-index="4" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 6 Content Container -->
+            <div class="tab-pane fade" id="tab6" role="tabpanel" aria-labelledby="tab6-tab">
+                <h3>Content for Tab Six</h3>
+                <div class="accordion" id="accordionTab6">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading1Tab6">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1Tab6" aria-expanded="true" aria-controls="collapse1Tab6">
+                                Accordion Item #1 for Tab Six
+                            </button>
+                        </h2>
+                        <div id="collapse1Tab6" class="accordion-collapse collapse show" aria-labelledby="heading1Tab6" data-bs-parent="#accordionTab6">
+                            <div class="accordion-body">
+                                <p>This is the body for the first accordion item in Tab Six.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="0" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="0" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="0" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading2Tab6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2Tab6" aria-expanded="false" aria-controls="collapse2Tab6">
+                                Accordion Item #2 for Tab Six
+                            </button>
+                        </h2>
+                        <div id="collapse2Tab6" class="accordion-collapse collapse" aria-labelledby="heading2Tab6" data-bs-parent="#accordionTab6">
+                            <div class="accordion-body">
+                                <p>This is the body for the second accordion item in Tab Six.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="1" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="1" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="1" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading3Tab6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3Tab6" aria-expanded="false" aria-controls="collapse3Tab6">
+                                Accordion Item #3 for Tab Six
+                            </button>
+                        </h2>
+                        <div id="collapse3Tab6" class="accordion-collapse collapse" aria-labelledby="heading3Tab6" data-bs-parent="#accordionTab6">
+                            <div class="accordion-body">
+                                <p>This is the body for the third accordion item in Tab Six.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="2" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="2" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="2" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading4Tab6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4Tab6" aria-expanded="false" aria-controls="collapse4Tab6">
+                                Accordion Item #4 for Tab Six
+                            </button>
+                        </h2>
+                        <div id="collapse4Tab6" class="accordion-collapse collapse" aria-labelledby="heading4Tab6" data-bs-parent="#accordionTab6">
+                            <div class="accordion-body">
+                                <p>This is the body for the fourth accordion item in Tab Six.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="3" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="3" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="3" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading5Tab6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5Tab6" aria-expanded="false" aria-controls="collapse5Tab6">
+                                Accordion Item #5 for Tab Six
+                            </button>
+                        </h2>
+                        <div id="collapse5Tab6" class="accordion-collapse collapse" aria-labelledby="heading5Tab6" data-bs-parent="#accordionTab6">
+                            <div class="accordion-body">
+                                <p>This is the body for the fifth accordion item in Tab Six.</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="4" data-info-type="1">Show Info 1</button>
+                                    <button class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="4" data-info-type="2">Show Info 2</button>
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal"
+                                            data-tab-id="tab6" data-accordion-index="4" data-info-type="3">Show Info 3</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Theme Settings Modal -->
+    <div class="modal fade" id="themeSettingsModal" tabindex="-1" aria-labelledby="themeSettingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="themeSettingsModalLabel">Theme Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="darkModeSwitch">
+                        <label class="form-check-label" for="darkModeSwitch">Dark Mode</label>
+                    </div>
+                    <hr>
+                    <p class="mb-2">Color Theme:</p>
+                    <div class="d-flex justify-content-around">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="colorTheme" id="colorThemeBlue" value="blue">
+                            <label class="form-check-label" for="colorThemeBlue">
+                                <span class="color-swatch bg-primary"></span> Blue
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="colorTheme" id="colorThemeGreen" value="green">
+                            <label class="form-check-label" for="colorThemeGreen">
+                                <span class="color-swatch bg-success"></span> Green
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="colorTheme" id="colorThemeOrange" value="orange" checked>
+                            <label class="form-check-label" for="colorThemeOrange">
+                                <span class="color-swatch bg-warning"></span> Orange
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Content Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="infoModalBody">
+                    <!-- Content will be injected here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Custom JavaScript -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>

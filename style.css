@@ -1,0 +1,228 @@
+/* Default/Light Theme Variables */
+:root {
+    --bs-body-bg: #f8f9fa; /* Light grey background */
+    --bs-body-color: #212529; /* Dark text */
+    --bs-border-color: #dee2e6; /* Light grey border */
+    --bs-body-color-rgb: 33,37,41; /* For shadows */
+
+    /* Navbar */
+    --bs-navbar-bg: var(--bs-light);
+    --bs-navbar-color: var(--bs-dark);
+    --bs-navbar-brand-color: var(--bs-dark);
+    --bs-navbar-nav-link-color: rgba(0,0,0,.55);
+    --bs-navbar-active-link-color: var(--bs-primary);
+
+    /* Tabs */
+    --bs-nav-tabs-border-color: var(--bs-border-color);
+    --bs-nav-tabs-link-color: var(--bs-gray-600);
+    --bs-nav-tabs-link-active-color: var(--bs-body-color);
+    --bs-nav-tabs-link-active-bg: var(--bs-white);
+    --bs-nav-tabs-link-active-border-color: var(--bs-border-color);
+    --bs-tab-content-bg: var(--bs-white);
+
+    /* Accordions */
+    --bs-accordion-bg: var(--bs-white);
+    --bs-accordion-color: var(--bs-body-color);
+    --bs-accordion-border-color: var(--bs-border-color);
+    --bs-accordion-button-bg: var(--bs-white);
+    --bs-accordion-button-color: var(--bs-body-color);
+    --bs-accordion-button-active-bg: #e9ecef; /* Light grey when active */
+    --bs-accordion-button-active-color: var(--bs-black);
+}
+
+body {
+    padding-top: 70px;
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
+}
+
+/* Navbar styles to use theme variables */
+.navbar {
+    background-color: var(--bs-navbar-bg) !important; /* Override Bootstrap's default bg */
+    border-bottom: 1px solid var(--bs-border-color);
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb), 0.075) !important;
+}
+
+.navbar-brand {
+    color: var(--bs-navbar-brand-color) !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--bs-navbar-nav-link-color) !important;
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--bs-navbar-active-link-color) !important;
+}
+
+/* Tab content styles to use theme variables */
+.tab-content {
+    background-color: var(--bs-tab-content-bg);
+    border-color: var(--bs-nav-tabs-border-color) !important;
+    transition: background-color 0.3s, border-color 0.3s;
+    border-radius: 0 0 0.25rem 0.25rem; /* Rounded corners only at the bottom */
+}
+
+/* Nav tabs styles to use theme variables */
+.nav-tabs {
+    border-bottom: 1px solid var(--bs-nav-tabs-border-color);
+}
+.nav-tabs .nav-link {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    color: var(--bs-nav-tabs-link-color);
+    border-color: var(--bs-nav-tabs-border-color);
+    background-color: transparent; /* Ensure no default background */
+    transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+}
+.nav-tabs .nav-link:hover {
+    border-color: var(--bs-nav-tabs-border-color); /* Simplified hover border */
+    isolation: isolate; /* To make borders overlap properly */
+}
+.nav-tabs .nav-link.active {
+    color: var(--bs-nav-tabs-link-active-color);
+    background-color: var(--bs-nav-tabs-link-active-bg);
+    border-color: var(--bs-nav-tabs-link-active-border-color);
+    border-bottom-color: var(--bs-tab-content-bg); /* Matches content background */
+}
+
+/* Accordion styles to use theme variables */
+.accordion-item {
+    border: 1px solid var(--bs-accordion-border-color);
+    margin-bottom: -1px; /* Collapse borders */
+    background-color: var(--bs-accordion-bg);
+    color: var(--bs-accordion-color);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.accordion-item:first-of-type {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+.accordion-item:last-of-type {
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+.accordion-button {
+    background-color: var(--bs-accordion-button-bg);
+    color: var(--bs-accordion-button-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+.accordion-button:not(.collapsed) {
+    color: var(--bs-accordion-button-active-color);
+    background-color: var(--bs-accordion-button-active-bg);
+    box-shadow: inset 0 -1px 0 var(--bs-accordion-border-color);
+}
+.accordion-body {
+    background-color: black;
+    color: white;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --bs-body-bg: #212529; /* Dark grey */
+    --bs-body-color: #f8f9fa; /* Light grey */
+    --bs-border-color: rgba(255, 255, 255, 0.125);
+    --bs-body-color-rgb: 248,249,250; /* For shadows in dark mode */
+
+    --bs-navbar-bg: #343a40 !important;
+    --bs-navbar-color: #f8f9fa;
+    --bs-navbar-brand-color: #f8f9fa;
+    --bs-navbar-nav-link-color: rgba(255,255,255,.75);
+    --bs-navbar-active-link-color: var(--bs-primary);
+
+    --bs-nav-tabs-border-color: rgba(255, 255, 255, 0.125);
+    --bs-nav-tabs-link-color: #e9ecef;
+    --bs-nav-tabs-link-active-color: #f8f9fa;
+    --bs-nav-tabs-link-active-bg: #2b3035;
+    --bs-nav-tabs-link-active-border-color: rgba(255, 255, 255, 0.125);
+    --bs-tab-content-bg: #2b3035;
+
+    --bs-accordion-bg: #2b3035;
+    --bs-accordion-color: #f8f9fa;
+    --bs-accordion-border-color: rgba(255, 255, 255, 0.125);
+    --bs-accordion-button-bg: #2b3035;
+    --bs-accordion-button-color: #f8f9fa;
+    --bs-accordion-button-active-bg: #495057;
+    --bs-accordion-button-active-color: #f8f9fa;
+}
+
+/* Light Theme (explicitly setting defaults for clarity, though it's the :root default) */
+body.light-theme {
+    --bs-body-bg: #f8f9fa;
+    --bs-body-color: #212529;
+    --bs-border-color: #dee2e6;
+    --bs-body-color-rgb: 33,37,41;
+
+    --bs-navbar-bg: var(--bs-light);
+    --bs-navbar-color: var(--bs-dark);
+    --bs-navbar-brand-color: var(--bs-dark);
+    --bs-navbar-nav-link-color: rgba(0,0,0,.55);
+    --bs-navbar-active-link-color: var(--bs-primary);
+
+    --bs-nav-tabs-border-color: var(--bs-border-color);
+    --bs-nav-tabs-link-color: var(--bs-gray-600);
+    --bs-nav-tabs-link-active-color: var(--bs-body-color);
+    --bs-nav-tabs-link-active-bg: var(--bs-white);
+    --bs-nav-tabs-link-active-border-color: var(--bs-border-color);
+    --bs-tab-content-bg: var(--bs-white);
+
+    --bs-accordion-bg: var(--bs-white);
+    --bs-accordion-color: var(--bs-body-color);
+    --bs-accordion-border-color: var(--bs-border-color);
+    --bs-accordion-button-bg: var(--bs-white);
+    --bs-accordion-button-color: var(--bs-body-color);
+    --bs-accordion-button-active-bg: #e9ecef;
+    --bs-accordion-button-active-color: var(--bs-black);
+}
+
+/* Color Themes (Primary Accent Color) */
+/* Bootstrap primary (blue) is the default, so no specific .theme-blue class needed for primary */
+body.theme-blue {
+    --bs-primary: #0d6efd; /* Bootstrap blue */
+    --bs-primary-rgb: 13,110,253;
+}
+body.theme-green {
+    --bs-primary: #198754; /* Bootstrap green */
+    --bs-primary-rgb: 25,135,84;
+}
+body.theme-orange {
+    --bs-primary: #FFA07A; /* Modern and soft orange */
+    --bs-primary-rgb: 255,160,122;
+}
+
+/* Theme settings modal specific styles */
+.modal-content {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+.modal-header, .modal-footer {
+    border-color: var(--bs-border-color);
+}
+.modal-title {
+    color: var(--bs-body-color);
+}
+.btn-close {
+    filter: invert(var(--bs-dark-mode-color-filter, 0)); /* Adjust close button color for dark mode */
+}
+body.dark-theme .btn-close {
+    filter: invert(1);
+}
+
+.color-swatch {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 5px;
+    border: 1px solid var(--bs-border-color);
+}
+
+/* Ensure form checks are visible in dark mode */
+body.dark-theme .form-check-input:checked {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
