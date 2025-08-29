@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Open Data 28082025</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0; /* Menghilangkan margin default body */
+    }
+
+    /* Sticky Header Styling */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background-color: white; /* Atau warna latar belakang lain yang Anda inginkan */
+      z-index: 100; /* Memastikan header tetap di atas elemen lain */
+      padding: 10px 0; /* Spasi atas dan bawah */
+      text-align: center; /* Memusatkan konten header */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Efek bayangan (opsional) */
+    }
+
+    .sticky-header h1 {
+      margin: 0; /* Menghilangkan margin default h1 */
+    }
+
+    /* Style untuk Filter Dropdown */
+    #filterContainer {
+      margin-bottom: 10px;
+    }
+
+    #filterDropdown {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    /* Styling untuk Tabel */
+    #myTable {
+      width: 100%;
+    }
+    #myTable th, #myTable td {
+      text-align: left;
+      padding: 8px;
+    }
+    #myTable th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <div class="sticky-header">
+    <h1>Daftar Data Jawa Barat</h1>
+    <p>Sumber: Open Data Jabar Kondisi 28 Agustus 2025</p>
+    
+    <div id="filterContainer">
+      <label for="filterDropdown">Produsen Data:</label>
+      <select id="filterDropdown">
+        <option value="">Semua</option>
+      </select>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th>Produsen Data</th>
+                <th>Judul Tabel</th>
+                <th>Tahun Data</th>
+                <th>Status Data</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+  </div>
+  
+
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      var table = $('#myTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+          'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        ajax: {
+          url: 'https://raw.githubusercontent.com/firmanh3200/Pembinaan-Statistik-Sektoral/refs/heads/main/data/opendata_2908.json',
+          dataType: 'text',
+          dataSrc: function (csv) {
+            var lines = csv.split('\n');
+            var headers = lines[0].split(';');
+            var data = [];
+            var produsenDataOptions = new Set();
+
+            for (var i = 1; i < lines.length; i++) {
+              var values = lines[i].split(';');
+              if (values.length === headers.length) {
+                var item = {};
+                for (var j = 0; j < headers.length; j++) {
+                  item[headers[j]] = values[j];
+                }
+                data.push(item);
+                produsenDataOptions.add(item["Produsen Data"]);
+              }
+            }
+
+            var filterDropdown = $('#filterDropdown');
+            produsenDataOptions.forEach(function(produsen) {
+              filterDropdown.append($('<option>', {
+                value: produsen,
+                text: produsen
+              }));
+            });
+
+            var dataTableData = data.map(function (item) {
+              return [
+                item["Produsen Data"],
+                item["Judul Tabel"],
+                item["Tahun Data"],
+                item["Status Data"]
+              ];
+            });
+
+            return dataTableData;
+          },
+          error: function (xhr, error, thrown) {
+            console.error("DataTables AJAX error:", error, thrown);
+          }
+        },
+        columns: [
+          { title: "Produsen Data" },
+          { title: "Judul Tabel" },
+          { title: "Tahun Data" },
+          { title: "Status Data" }
+        ]
+      });
+
+      $('#filterDropdown').on('change', function() {
+        var selectedProdusen = $(this).val();
+        table.column(0).search(selectedProdusen).draw();
+      });
+    });
+  </script>
+</body>
+</html>
