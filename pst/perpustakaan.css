@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: #edf3f6;
+    position: relative;
+}
+
+.background-overlay {
+    background: url('library_bg.jpg') no-repeat center top/cover;
+    filter: brightness(0.60) blur(1.5px);
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 32px auto;
+    background: rgba(255,255,255,0.94);
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    padding: 32px 28px 24px 28px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+    padding-bottom: 12px;
+}
+
+.logo-area {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.logo-bps, .logo-pst, .logo-berakhlak {
+    height: 54px;
+}
+.logo-area .logo-right img {
+    height: 39px;
+    margin-left: 10px;
+}
+header h1 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin: 6px 0 0 0;
+    color: #01564a;
+    letter-spacing: 1px;
+    line-height: 1.1;
+}
+header h1 .heavy {
+    font-size: 2.6rem;
+    color: #212121;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+/* Grid rows */
+.row-3, .row-2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-bottom: 22px;
+}
+.row-3 > .card {
+    flex: 1 1 0;
+    min-width: 267px;
+}
+.row-2 > .card {
+    flex: 1 1 100%;
+    min-width: 450px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 13px rgba(41, 83, 95, 0.1);
+    padding: 22px 19px 18px 19px;
+    margin: 0;
+    flex-grow: 1;
+    font-size: 1rem;
+}
+.card.green {
+    border-top: 6px solid #3aad34;
+}
+.card.blue {
+    border-top: 6px solid #013973;
+}
+/* Headings */
+.card h2 {
+    margin-top: 0;
+    font-size: 1.21rem;
+    color: #187931;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+.card.blue h2 {
+    color: #013973;
+}
+.card .icon-with-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+}
+.card .icon-with-text .material-icons {
+    font-size: 29px;
+    color: #187931;
+}
+.card .icon-with-text .money {
+    color: #ffb701;
+}
+.label {
+    display: inline-block;
+    border-radius: 19px;
+    padding: 3px 14px;
+    font-size: 0.92em;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 3px;
+    vertical-align: top;
+}
+.label.offline { background: #e7403a; }
+.label.online { background: #187931; }
+
+.half {
+    width: 48%;
+    float: left;
+    min-width: 220px;
+}
+.half + .half { margin-left: 4%; }
+.steps {
+    padding: 0;
+    margin: 0 0 0 18px;
+    list-style-type: none;
+}
+.steps li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 23px;
+}
+.steps li:before {
+    content: '•';
+    color: #3aad34;
+    font-size: 1.3em;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.card ol {
+    padding-left: 25px;
+}
+.card.blue ul.contact {
+    padding-left: 19px;
+    font-size: 0.99em;
+}
+.card.blue ul.contact li { margin-bottom: 7px; }
+.card.blue a { color: #2179c2; text-decoration: underline; }
+
+/* Clear floats for .half in .row-2 .card */
+.row-2 .card:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .container { max-width: 96vw; }
+    .row-3, .row-2 { flex-direction: column; gap: 17px; }
+    .half, .half + .half { width: 100%; margin-left: 0; }
+    .row-3 > .card, .row-2 > .card { min-width: unset; }
+    header h1 .heavy { font-size: 2.2rem; }
+}
