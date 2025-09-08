@@ -2,375 +2,101 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Standar Pelayanan Penjualan Produk Statistik</title>
+    <title>Standar Pelayanan Produk Statistik Berbayar</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
-            background-image: url('https://i.imgur.com/your-background-image.jpg'); /* Replace with a suitable background if available, otherwise remove */
-            background-size: cover;
-            background-position: center;
-        }
-
-        .container {
-            width: 1000px; /* Adjust as needed to match image width */
-            background-color: white;
-            padding: 30px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            box-sizing: border-box;
-            position: relative;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-        }
-
-        .header-left, .header-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-left img, .header-right img {
-            height: 50px; /* Adjust logo size */
-            margin-right: 10px;
-        }
-
-        .header-title {
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-
-        .header-title h1 {
-            font-size: 2.5em;
-            color: #333;
-            margin: 0;
-            line-height: 1.2;
-        }
-
-        .section-title {
-            background-color: #5cb85c; /* Green color from image */
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-            font-weight: bold;
-            display: inline-block; /* To make it fit content */
-        }
-
-        .content-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .content-column {
-            flex: 1;
-            margin-right: 20px;
-            padding: 15px;
-            /* background-color: #f9f9f9; */ /* Removed to match image transparency */
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        .content-column:last-child {
-            margin-right: 0;
-        }
-
-        .list-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-
-        .list-item i {
-            margin-right: 10px;
-            color: #5cb85c;
-            font-size: 1.2em;
-        }
-
-        .offline-tag {
-            background-color: #d9534f; /* Red color */
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-right: 10px;
-            display: inline-block;
-        }
-
-        .online-tag {
-            background-color: #5cb85c; /* Green color */
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-right: 10px;
-            display: inline-block;
-        }
-
-        .info-box {
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .info-box i {
-            font-size: 1.5em;
-            margin-right: 10px;
-            color: #5cb85c;
-        }
-
-        .fee-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .fee-info .icon {
-            font-size: 2em;
-            color: #4CAF50; /* Green */
-            margin-right: 15px;
-            background-color: #d4edda;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        .fee-detail p {
-            margin: 0;
-            line-height: 1.4;
-        }
-        .fee-detail .price-paid {
-            font-weight: bold;
-            color: #333;
-        }
-        .fee-detail .price-free {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-
-        .procedure-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-        .procedure-item .icon {
-            font-size: 1.8em;
-            color: #5cb85c;
-            margin-right: 15px;
-            min-width: 30px; /* Ensure icon has space */
-            text-align: center;
-        }
-        .procedure-item p {
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        .contact-info p {
-            margin: 5px 0;
-        }
-
-        .product-list ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .product-list li {
-            margin-bottom: 5px;
-        }
-        
-        .main-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .grid-item {
-            /* background-color: #f9f9f9; */ /* Removed to match image transparency */
-            padding: 20px;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        /* Specific adjustments for layout to match the image more closely */
-        .requirements, .fees, .complaints, .products {
-            grid-column: 1 / 2;
-        }
-        .timeline, .procedure-offline, .procedure-online {
-            grid-column: 2 / 3;
-        }
-
-        .timeline-box {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 10px 0;
-        }
-        .timeline-box span {
-            margin-left: 10px;
-        }
-
-        .procedure-section {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .procedure-section h3 {
-            margin-top: 0;
-            font-size: 1.1em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        /* Icons - using Font Awesome for simplicity. If not available, use basic text or generic icons. */
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+        body { font-family: Arial, Helvetica, sans-serif; margin: 0; background: #f6f8fa; }
+        .container { max-width: 900px; margin: 30px auto; background: #fff; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,.05); padding: 40px; }
+        h1, h2, h3 { margin-top: 0; color: #1a3d7c; }
+        .logo-row { display: flex; align-items: center; margin-bottom: 20px;}
+        .logo-row img { height: 55px; margin-right: 20px;}
+        .section { margin-bottom: 30px; }
+        .row { display: flex; gap: 40px; }
+        .card { background: #f2fbf9; border-radius: 10px; padding: 24px; flex: 1; }
+        .green { color: #23a455; font-weight: bold; }
+        .red { color: #e13d4a; font-weight: bold; }
+        .yellow { color: #f8a90b; font-weight: bold; }
+        ul,ol { margin: 0 0 0 19px; }
+        .tarif {background: #e7fae7; padding: 10px 20px; border-radius: 6px; font-size: 16px; margin-top: 10px;}
+        .prosedur-list {font-size: 16px;}
+        .ikon {vertical-align: middle; width: 22px; margin-right: 8px;}
+        .footer { font-size: 14px; background:#f0f3f7; padding:18px; border-radius:8px;}
+        .produk-list {margin:8px 0;}
+        @media (max-width: 700px) { .row { flex-direction: column; } .container { padding: 20px; } }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <!-- 
-            <div class="header-left">
-                
-                <img src="https://via.placeholder.com/50x50?text=BPS" alt="Logo BPS Jawa Barat">
-                <div>
-                    <p style="font-size: 0.9em; margin: 0; font-weight: bold;">BADAN PUSAT STATISTIK</p>
-                    <p style="font-size: 1.1em; margin: 0; font-weight: bold;">PROVINSI JAWA BARAT</p>
-                </div>
+        <h1 style="margin-bottom:6px">Standar Pelayanan</h1>
+        <h2 style="margin-top:0px">Produk Statistik Berbayar</h2>
+        <div class="section row">
+            <div class="card">
+                <h3>Persyaratan</h3>
+                <ul>
+                    <li>Alamat <strong>E-mail</strong></li>
+                    <li><strong>Surat Permintaan Data</strong> (untuk Layanan nol rupiah)</li>
+                    <li><strong>Abstraksi Pengguna Data</strong></li>
+                    <li>Menyetujui <strong>Surat Perjanjian Penggunaan Data</strong></li>
+                </ul>
             </div>
-            <div class="header-right">
-                <img src="https://via.placeholder.com/50x50?text=PS+Terpadu" alt="Logo Pelayanan Statistik Terpadu">
-                <img src="https://via.placeholder.com/50x50?text=BerAKHLAK" alt="Logo BerAKHLAK">
-            </div> -->
-        
-        <div class="header-title text-center">
-            <p style="font-size: 1.8em; margin: 0; color: #666;">Standar Pelayanan</p>
-            <h1>PRODUK STATISTIK BERBAYAR</h1>
+            <div class="card">
+                <h3>Jangka Waktu</h3>
+                <span class="red">OFFLINE</span><br>
+                <span>sesuai antrian maksimal <strong>10 Menit</strong> setelah mengisi buku tamu</span><br><br>
+                <span class="green">ONLINE</span><br>
+                <span><strong>1 Hari Kerja</strong> setelah permintaan jelas dan persyaratan dilengkapi</span>
+            </div>
         </div>
-        
-        </div>  
-
-        
-
-        <div class="main-grid">
-            <!-- Persyaratan -->
-            <div class="card card-round">
-                <div class="grid-item requirements">
-                    <div class="section-title">Persyaratan</div>
-                    <ul>
-                        <li class="list-item"><i class="fas fa-circle" style="font-size: 0.5em; align-self: center;"></i>Alamat E-mail</li>
-                        <li class="list-item"><i class="fas fa-circle" style="font-size: 0.5em; align-self: center;"></i>Surat Permintaan Data (untuk Layanan nol rupiah)</li>
-                        <li class="list-item"><i class="fas fa-circle" style="font-size: 0.5em; align-self: center;"></i>Abstraksi Pengguna Data</li>
-                        <li class="list-item"><i class="fas fa-circle" style="font-size: 0.5em; align-self: center;"></i>Menyetujui Surat Perjanjian Penggunaan Data</li>
-                    </ul>
+        <div class="section">
+            <h3>Tarif/Biaya</h3>
+            <div class="tarif">
+                <strong>Berbayar sesuai PP No. 13 Th 2024</strong><br>
+                Layanan <span class="green">0 (nol) rupiah</span> sesuai Perban BPS No. 2 Th 2019
+            </div>
+        </div>
+        <div class="section row">
+            <div class="card">
+                <h3>Prosedur OFFLINE</h3>
+                <ol class="prosedur-list">
+                    <li><span class="yellow">Mengisi Buku Tamu</span><br>
+                        Setelah mengisi buku tamu, konsumen akan mendapatkan nomor antrian layanan <strong>Penjualan</strong></li>
+                    <li>Menunggu di Ruang Tunggu<br>
+                        Konsumen menunggu di ruang tunggu hingga dipanggil sesuai nomor antrian atau mengikuti arahan petugas layanan</li>
+                    <li>Pelayanaan Oleh Petugas<br>
+                        Konsumen akan dilayani oleh petugas layanan di meja layanan sesuai nomor antrian</li>
+                    <li>Memberikan Nilai Kepuasan<br>
+                        Setelah selesai dilayani, konsumen dapat memberikan penilaian terhadap layanan yang diterima</li>
+                </ol>
+            </div>
+            <div class="card">
+                <h3>Prosedur ONLINE</h3>
+                <ol class="prosedur-list">
+                    <li>Kunjungi Situs Layanan<br>
+                        Kunjungi website <strong>pst.bps.go.id</strong> pada layanan utama pilih menu <strong>Penjualan</strong>, lalu login atau klik daftar diri jika belum terdaftar, kemudian lengkapi Biodata, aktivasi akun dan login kembali</li>
+                    <li>Buat Transaksi Permintaan Data<br>
+                        Melalui menu <strong>transaksi</strong> buat / permintaan data, kemudian masukkan data-data yang dibutuhkan dan ikuti seluruh proses hingga selesai termasuk pembayaran dan tanda tangan surat perjanjian penggunaan data</li>
+                    <li>Memberikan Rating<br>
+                        Setelah selesai dilayani, konsumen dapat memberikan penilaian terhadap layanan yang diterima melalui Silastik
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="section row">
+            <div class="card">
+                <h3>Pengaduan, Saran, Masukan</h3>
+                <div class="footer">
+                    <strong>Pengaduan Langsung:</strong> Kotak saran & pengaduan di PST BPS Provinsi Jawa Barat lantai 1<br>
+                    <strong>Website:</strong> <a href="https://www.lapor.go.id/" target="_blank">https://www.lapor.go.id</a> (SP4N LAPOR)<br>
+                    <strong>Email:</strong> pst32000@bps.go.id<br>
+                    <strong>Telepon:</strong> (022) 7272595
                 </div>
             </div>
-            
-
-            <!-- Jangka Waktu -->
-            <div class="grid-item timeline">
-                <div class="section-title">Jangka Waktu</div>
-                <div class="timeline-box">
-                    <span class="offline-tag">OFFLINE</span>
-                    <span>sesuai antrian maksimal <strong style="color: #d9534f;">10 Menit</strong> setelah mengisi buku tamu</span>
-                </div>
-                <div class="timeline-box">
-                    <span class="online-tag">ONLINE</span>
-                    <span><strong style="color: #5cb85c;">1 Hari Kerja</strong> setelah permintaan jelas dan persyaratan dilengkapi</span>
-                </div>
-            </div>
-
-            <!-- Tarif/Biaya -->
-            <div class="grid-item fees">
-                <div class="section-title">Tarif/Biaya</div>
-                <div class="fee-info">
-                    <div class="icon" style="background-color: #FFEB3B; color: #FBC02D;"><i class="fas fa-dollar-sign"></i></div>
-                    <div class="fee-detail">
-                        <p class="price-paid">Berbayar sesuai <strong style="color: #333;">PP No. 13 Th 2024</strong></p>
-                    </div>
-                </div>
-                <div class="fee-info">
-                    <div class="icon" style="background-color: #E8F5E9; color: #4CAF50;"><i class="fas fa-dollar-sign"></i></div>
-                    <div class="fee-detail">
-                        <p class="price-free">Layanan 0 (nol) rupiah sesuai <strong style="color: #4CAF50;">Perban BPS No. 2 Th 2019</strong></p>
-                    </div>
-                </div>
-                
-                <br><br>
-                <div class="section-title">Pengaduan, Saran, Masukan</div>
-                <div class="contact-info">
-                    <p><strong>Pengaduan Langsung:</strong> Kotak saran & pengaduan di PST BPS Provinsi Jawa Barat lantai 1</p>
-                    <p><strong>Website:</strong> <a href="https://www.lapor.go.id" target="_blank" style="color: #5cb85c; text-decoration: none;">https://www.lapor.go.id</a> (SP4N LAPOR)</p>
-                    <p><strong>Email:</strong> <a href="mailto:pst3200@bps.go.id" style="color: #5cb85c; text-decoration: none;">pst3200@bps.go.id</a></p>
-                    <p><strong>Telepon:</strong> (022) 7272595</p>
-                </div>
-
-                <br><br>
-                <div class="section-title">Produk Pelayanan</div>
-                <div class="product-list">
-                    <p>Publikasi Softcopy, Data Mikro, dan Peta Wilayah Kerja Statistik</p>
-                </div>
-            </div>
-
-            <!-- Prosedur OFFLINE -->
-            <div class="grid-item procedure-offline">
-                <div class="section-title">Prosedur</div>
-                <div class="procedure-section">
-                    <div class="timeline-box" style="margin-bottom: 20px;">
-                        <span class="offline-tag">OFFLINE</span>
-                    </div>
-                    <div class="procedure-item">
-                        <div class="icon"><i class="fas fa-book-reader"></i></div>
-                        <p><strong>Mengisi Buku Tamu</strong><br>Setelah mengisi buku tamu, konsumen akan mendapatkan nomor antrian layanan Penjualan</p>
-                    </div>
-                    <div class="procedure-item">
-                        <div class="icon"><i class="fas fa-couch"></i></div>
-                        <p><strong>Menunggu di Ruang Tunggu</strong><br>Konsumen menunggu di ruang tunggu hingga dipanggil sesuai nomor antrian atau mengikuti arahan petugas layanan</p>
-                    </div>
-                    <div class="procedure-item">
-                        <div class="icon"><i class="fas fa-user-tie"></i></div>
-                        <p><strong>Pelayanan Oleh Petugas</strong><br>Konsumen akan dilayani oleh petugas layanan di meja layanan sesuai dengan jenis layanan yang dipilih</p>
-                    </div>
-                    <div class="procedure-item">
-                        <div class="icon"><i class="fas fa-star"></i></div>
-                        <p><strong>Memberikan Nilai Kepuasan</strong><br>Setelah selesai dilayani petugas, konsumen dapat memberikan penilaian terhadap layanan yang diterima</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Prosedur ONLINE -->
-            <div class="grid-item procedure-online">
-                <div class="procedure-section">
-                    <div class="timeline-box" style="margin-bottom: 20px;">
-                        <span class="online-tag">ONLINE</span>
-                    </div>
-                    <div class="procedure-item">
-                        <div class="icon"><i class="fas fa-globe"></i></div>
-                        <p><strong>Kunjungi Situs Layanan</strong><br>Kunjungi website <a href="https://pst.bps.go.id" target="_blank" style="color: #5cb85c; text-decoration: none;">pst.bps.go.id</a> pada layanan utama pilih menu Penjualan, lalu login atau klik daftar disini jika belum terdaftar, kemudian lengkapi biodata, aktivasi akun dan login kembali</p>
-                    </div>
-                    <div class="procedure-item">
-                        <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                        <p><strong>Buat Transaksi Permintaan Data</strong><br>Melalui menu <strong>transaksi > transaksi baru > permintaan data</strong>, kemudian masukkan data-data yang dibutuhkan dan ikuti seluruh proses hingga selesai termasuk pembayaran dan tanda tangan surat perjanjian penggunaan data</p>
-                    </div>
-                    <div class="procedure-item">
-                        <div class="icon"><i class="fas fa-chart-line"></i></div>
-                        <p><strong>Memberikan Rating</strong><br>Setelah selesai dilayani petugas, konsumen dapat memberikan penilaian terhadap layanan yang diterima melalui Silastik</p>
-                    </div>
-                </div>
+            <div class="card">
+                <h3>Produk Pelayanan</h3>
+                <ul class="produk-list">
+                    <li>Publikasi <strong>Softcopy</strong></li>
+                    <li><strong>Data Mikro</strong></li>
+                    <li>Peta Wilayah Kerja Statistik</li>
+                </ul>
             </div>
         </div>
     </div>
