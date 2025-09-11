@@ -159,6 +159,26 @@
       border-radius:6px;
     }
 
+    a {
+    color: inherit; /* Menggunakan warna teks dari elemen induk */
+    text-decoration: none; /* Menghilangkan garis bawah */
+    }
+
+    a:visited {
+    color: inherit; /* Tetap menggunakan warna teks dari elemen induk setelah dikunjungi */
+    text-decoration: none;
+    }
+
+    a:hover {
+    color: #007bff; /* Contoh: Mengubah warna saat kursor diarahkan (hover) */
+    text-decoration: underline; /* Contoh: Menambahkan garis bawah saat hover (opsional) */
+    }
+
+    a:active {
+    color: inherit; /* Tetap menggunakan warna teks dari elemen induk saat diklik */
+    text-decoration: none;
+    }
+
     @media (max-width:640px){
       .app{ padding:12px; margin:12px; }
       h1.title{ font-size:22px; }
@@ -167,7 +187,7 @@
 </head>
 <body>
   <div class="app">
-    <h1 class="title">Panduan Berakhlak Pegawai BPS</h1>
+    <h1 class="title"><span class="divider" title="divider"></span> Panduan Berakhlak Pegawai BPS <span class="divider" title="divider"></span></h1>
 
     <section class="card header-with-divider" aria-labelledby="container-heading">
       <div class="header">
@@ -180,52 +200,53 @@
 
       <br>
 
-    <details>
-      <summary>
-        <span class="summary-left"><span class="arrow" aria-hidden="true"></span>Memahami dan memenuhi kebutuhan masyarakat</span>
-        <span aria-hidden="true"></span>
-      </summary>
-      <div class="expander-content">
-        <div class="success" role="status" aria-live="polite">Memahami dan memenuhi kebutuhan masyarakat</div>
-        <ol class="list-items">
-          <li>Mengidentifikasi kebutuhan stakeholders secara proaktif dalam rangka memberikan pelayanan prima</li>
-          <li>Turut serta dalam menyampaikan ragam data dan/atau informasi yang tersedia di BPS kepada stakeholders</li>
-          <li>Memberikan pelayanan rekomendasi dan konsultasi statistik berdasarkan kebutuhan konsumen atau pengguna data</li>
-        </ol>
-      </div>
-    </details>
+        <details>
+        <summary>
+            <span class="summary-left"><span class="arrow" aria-hidden="true"></span>Memahami dan memenuhi kebutuhan masyarakat</span>
+            <span aria-hidden="true"></span>
+        </summary>
+        <div class="expander-content">
+            <div class="success" role="status" aria-live="polite">Memahami dan memenuhi kebutuhan masyarakat</div>
+            <ol class="list-items">
+            <li>Mengidentifikasi kebutuhan stakeholders secara proaktif dalam rangka memberikan pelayanan prima</li>
+            <li>Turut serta dalam menyampaikan ragam data dan/atau informasi yang tersedia di BPS kepada stakeholders</li>
+            <li>Memberikan pelayanan rekomendasi dan konsultasi statistik berdasarkan kebutuhan konsumen atau pengguna data</li>
+            </ol>
+        </div>
+        </details>
 
-    <details>
-      <summary>
-        <span class="summary-left"><span class="arrow" aria-hidden="true"></span>Ramah, cekatan, solutif, dan dapat diandalkan</span>
-        <span aria-hidden="true"></span>
-      </summary>
-      <div class="expander-content">
-        <div class="success" role="status" aria-live="polite">Ramah, cekatan, solutif, dan dapat diandalkan</div>
-        <ol class="list-items">
-          <li>Memberikan solusi terhadap permasalahan terkait data yang dihadapi stakeholders</li>
-          <li>Responsif dalam memberikan pelayanan</li>
-          <li>Menerapkan 5S (Senyum, Sapa, Salam, Sopan dan Santun) ketika memberikan pelayanan</li>
-        </ol>
-      </div>
-    </details>
+        <details>
+        <summary>
+            <span class="summary-left"><span class="arrow" aria-hidden="true"></span>Ramah, cekatan, solutif, dan dapat diandalkan</span>
+            <span aria-hidden="true"></span>
+        </summary>
+        <div class="expander-content">
+            <div class="success" role="status" aria-live="polite">Ramah, cekatan, solutif, dan dapat diandalkan</div>
+            <ol class="list-items">
+            <li>Memberikan solusi terhadap permasalahan terkait data yang dihadapi stakeholders</li>
+            <li>Responsif dalam memberikan pelayanan</li>
+            <li>Menerapkan 5S (Senyum, Sapa, Salam, Sopan dan Santun) ketika memberikan pelayanan</li>
+            </ol>
+        </div>
+        </details>
 
-    <details>
-      <summary>
-        <span class="summary-left"><span class="arrow" aria-hidden="true"></span>Melakukan perbaikan tiada henti</span>
-        <span aria-hidden="true"></span>
-      </summary>
-      <div class="expander-content">
-        <div class="success" role="status" aria-live="polite">Melakukan perbaikan tiada henti</div>
-        <ol class="list-items">
-          <li>Melakukan evaluasi untuk meningkatkan kualitas dan memperbaiki kekurangan</li>
-          <li>Menindaklanjuti setiap kritik, saran, dan masukan untuk perbaikan pelayanan</li>
-          <li>Melakukan upaya peningkatan wawasan dan pengetahuan dalam rangka peningkatan kualitas pelayanan</li>
-        </ol>
-      </div>
-    </details>
+        <details>
+        <summary>
+            <span class="summary-left"><span class="arrow" aria-hidden="true"></span>Melakukan perbaikan tiada henti</span>
+            <span aria-hidden="true"></span>
+        </summary>
+        <div class="expander-content">
+            <div class="success" role="status" aria-live="polite">Melakukan perbaikan tiada henti</div>
+            <ol class="list-items">
+            <li>Melakukan evaluasi untuk meningkatkan kualitas dan memperbaiki kekurangan</li>
+            <li>Menindaklanjuti setiap kritik, saran, dan masukan untuk perbaikan pelayanan</li>
+            <li>Melakukan upaya peningkatan wawasan dan pengetahuan dalam rangka peningkatan kualitas pelayanan</li>
+            </ol>
+        </div>
+        </details>
     </section>
 
+    <!--Akuntabel-->
     <section class="card" aria-labelledby="container-heading">
       <div class="header">
         <h2 id="container-heading">Akuntabel <span class="divider"></span></h2>
@@ -236,11 +257,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Melaksanakan tugas dengan jujur, bertanggung jawab, cermat, disiplin, dan berintegritas tinggi</span></summary>
         <div class="expander-content">
             <div class="success">Melaksanakan tugas dengan jujur, bertanggung jawab, cermat, disiplin, dan berintegritas tinggi</div>
-            <ul class="list-items">
-            <li>1. Melaksanakan pekerjaan dengan akuntabel baik teknis maupun administrasi</li>
-            <li>2. Bekerja sesuai SOP dan mengikuti jadwal yang sudah ditetapkan; dan</li>
-            <li>3. Bersikap integritas dengan menolak perilaku yang tidak sesuai dengan aturan.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Melaksanakan pekerjaan dengan akuntabel baik teknis maupun administrasi</li>
+            <li>Bekerja sesuai SOP dan mengikuti jadwal yang sudah ditetapkan; dan</li>
+            <li>Bersikap integritas dengan menolak perilaku yang tidak sesuai dengan aturan.</li>
+            </ol>
         </div>
         </details>
 
@@ -248,11 +269,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Menggunakan kekayaan dan barang milik negara secara bertanggung jawab, efektif, dan efisien</span></summary>
         <div class="expander-content">
             <div class="success">Menggunakan kekayaan dan barang milik negara secara bertanggung jawab, efektif, dan efisien</div>
-            <ul class="list-items">
-            <li>1. Memanfaatkan sarana dan prasarana (barang milik negara) secara efektif, efisien, dan sesuai dengan peruntukannya</li>
-            <li>2. Memelihara sarana dan prasarana (barang milik negara) dengan baik; dan</li>
-            <li>3. Menyadari hak pakai bukan hak milik atas sarana dan prasarana (barang milik negara).</li>
-            </ul>
+            <ol class="list-items">
+            <li>Memanfaatkan sarana dan prasarana (barang milik negara) secara efektif, efisien, dan sesuai dengan peruntukannya</li>
+            <li>Memelihara sarana dan prasarana (barang milik negara) dengan baik; dan</li>
+            <li>Menyadari hak pakai bukan hak milik atas sarana dan prasarana (barang milik negara).</li>
+            </ol>
         </div>
         </details>
 
@@ -260,15 +281,16 @@
         <summary><span class="summary-left"><span class="arrow"></span>Tidak menyalahgunakan kewenangan jabatan</span></summary>
         <div class="expander-content">
             <div class="success">Tidak menyalahgunakan kewenangan jabatan</div>
-            <ul class="list-items">
-            <li>1. Melaksanakan tugas pokok dan fungsi sesuai aturan atau kebijakan yang berlaku;</li>
-            <li>2. Tidak terlibat dalam praktik Korupsi, Kolusi dan Nepotisme (KKN); dan</li>
-            <li>3. Tidak memberikan dan/atau meminta perlakuan khusus kepada siapapun.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Melaksanakan tugas pokok dan fungsi sesuai aturan atau kebijakan yang berlaku;</li>
+            <li>Tidak terlibat dalam praktik Korupsi, Kolusi dan Nepotisme (KKN); dan</li>
+            <li>Tidak memberikan dan/atau meminta perlakuan khusus kepada siapapun.</li>
+            </ol>
         </div>
         </details>
     </section>
 
+    <!--Kompeten-->
     <section class="card" aria-labelledby="container-heading">
       <div class="header">
         <h2 id="container-heading">Kompeten <span class="divider"></span></h2>
@@ -279,11 +301,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Meningkatkan kompetensi diri untuk menjawab tantangan yang selalu berubah</span></summary>
         <div class="expander-content">
             <div class="success">Meningkatkan kompetensi diri untuk menjawab tantangan yang selalu berubah</div>
-            <ul class="list-items">
-            <li>1. Meningkatkan kompetensi diri melalui pendidikan (formal/nonformal/kursus/diklat) yang diselenggarakan baik secara daring maupun luring</li>
-            <li>2. Bertukar pikiran dan berdiskusi dengan berbagai pihak untuk meningkatkan kompetensi diri; dan</li>
-            <li>3. Senang belajar dan berupaya mengikuti perkembangan terkini.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Meningkatkan kompetensi diri melalui pendidikan (formal/nonformal/kursus/diklat) yang diselenggarakan baik secara daring maupun luring</li>
+            <li>Bertukar pikiran dan berdiskusi dengan berbagai pihak untuk meningkatkan kompetensi diri; dan</li>
+            <li>Senang belajar dan berupaya mengikuti perkembangan terkini.</li>
+            </ol>
         </div>
         </details>
 
@@ -291,25 +313,71 @@
         <summary><span class="summary-left"><span class="arrow"></span>Membantu orang lain belajar</span></summary>
         <div class="expander-content">
             <div class="success">Membantu orang lain belajar</div>
-            <ul class="list-items">
-            <li>1. Aktif mendorong dan membantu orang lain untuk senantiasa meningkatkan pengetahuan dan kemampuan</li>
-            <li>2. Gemar membagikan pengetahuan, pengalaman, dan hal-hal positif terkait dengan pembelajaran yang dapat meningkatkan kapasitas individu di sekitarnya; dan</li>
-            <li>3. Menciptakan sarana dan lingkungan yang kondusif untuk belajar.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Aktif mendorong dan membantu orang lain untuk senantiasa meningkatkan pengetahuan dan kemampuan</li>
+            <li>Gemar membagikan pengetahuan, pengalaman, dan hal-hal positif terkait dengan pembelajaran yang dapat meningkatkan kapasitas individu di sekitarnya; dan</li>
+            <li>Menciptakan sarana dan lingkungan yang kondusif untuk belajar.</li>
+            </ol>
         </div>
         </details>
 
         <details>
-        <summary><span class="summary-left"><span class="arrow"></span>Melaksanakan tugas dengan kualitas terbaik</span></summary>
-        <div class="expander-content">
-            <div class="success">Melaksanakan tugas dengan kualitas terbaik</div>
-            <ul class="list-items">
-            <li>1. Melaksanakan tugas yang diberikan dengan hasil akhir yang maksimal;</li>
-            <li>2. Menetapkan standar kualitas yang tinggi dalam penyelesaian pekerjaan; dan</li>
-            <li>3. Menjaga dan meningkatkan kualitas hasil pekerjaan dengan melakukan evaluasi secara berkala dan sistematis.</li>
-            </ul>
-        </div>
+            <summary><span class="summary-left"><span class="arrow"></span>Melaksanakan tugas dengan kualitas terbaik</span></summary>
+            <div class="expander-content">
+                <div class="success">Melaksanakan tugas dengan kualitas terbaik</div>
+                <ol class="list-items">
+                <li>Melaksanakan tugas yang diberikan dengan hasil akhir yang maksimal;</li>
+                <li>Menetapkan standar kualitas yang tinggi dalam penyelesaian pekerjaan; dan</li>
+                <li>Menjaga dan meningkatkan kualitas hasil pekerjaan dengan melakukan evaluasi secara berkala dan sistematis.</li>
+                </ol>
+            </div>
         </details>
+
+        <details>
+            <summary><span class="summary-left"><span class="arrow"></span>Kamus/ Standar Kompetensi Jabatan Fungsional</span></summary>
+            <div class="expander-content">
+                <br>
+                <ul class="list-items">
+                    <li>
+                        <a href="https://drive.google.com/file/d/10lmwkjbt5UqiUGhc5_9cC1uvewOV0dtF/view?usp=sharing" target="_blank">Jabatan Fungsional</a>
+                    </li>
+                    <li>
+                        <a href="https://drive.google.com/file/d/1HYS579eMGokgtEsNzfdqgwrU9M-pxuNy/view?usp=sharing" target="_blank">Statistisi</a>
+                    </li>
+                    <li>
+                        <a href="https://drive.google.com/file/d/1plzga7YhTHpaALZGyAOm_xdQ3savPYhe/view?usp=sharing" target="_blank">Pranata Komputer</a>
+                    </li>
+                    <li>
+                        <a href="https://drive.google.com/file/d/1ZqxLB-Se6vp1mCvD2Mmeo_WIoXnzC-Eq/view?usp=sharing" target="_blank">Kepegawaian</a>
+                    </li>
+                    <li>
+                        <a href="https://djpb.kemenkeu.go.id/kppn/kotabumi/id/informasi/jf-perbend/jafung-apk-apbn.html" target="_blank">APK APBN</a>
+                    </li>
+                    <li>
+                        <a href="https://klc2.kemenkeu.go.id/kms/knowledge/kompetensi-teknis-jabatan-fungsional-analis-anggaran-33246e71/detail/" target="_blank">Analis Anggaran</a>
+                    </li>
+                    <li>
+                        <a href="https://drive.google.com/file/d/1LxbZWUtmIMOFyPrYBsuT7v4Zc0cmP409/view?usp=sharing" target="_blank">Keuangan Negara</a>
+                    </li>
+                    <li>
+                        <a href="https://www.anri.go.id/publikasi/berita/standar-kompetensi-jabatan-fungsional-arsiparis" target="_blank">Arsiparis</a>
+                    </li>
+                    <li>
+                        <a href="https://drive.google.com/file/d/1dgDAQhL_79LJMHrhDK3fz3yMjSNbB4QT/view?usp=sharing" target="_blank">Pustakawan</a>
+                    </li>
+                    <li>
+                        <a href="https://drive.google.com/file/d/1GvkXDQTV4KI7Qr4qIDPcpgaTtiqHP3Mv/view?usp=sharing" target="_blank">Pengadaan Barang Jasa</a>
+                    </li>
+                    <li>
+                        <a href="https://drive.google.com/file/d/1UI1lf_-sM0kBHeJCYdds8qGC8155vkGL/view?usp=sharing" target="_blank">Pranata Humas</a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank"></a>
+                    </li>
+                </ul>
+        </details>
+
+        
     </section>
 
     <section class="card" aria-labelledby="container-heading">
@@ -322,11 +390,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Menghargai setiap orang apapun latar belakangnya</span></summary>
         <div class="expander-content">
             <div class="success">Menghargai setiap orang apapun latar belakangnya</div>
-            <ul class="list-items">
-            <li>1. Menerima saran dan masukan dari siapapun tanpa melihat latar belakang jabatan, serta mengutamakan musyawarah mufakat</li>
-            <li>2. Memberikan apresiasi terhadap hasil kerja anggota tim ataupun rekan kerja yang lain</li>
-            <li>3. Menjaga sikap dan berlaku sopan santun terhadap siapa pun dalam pergaulan sosial baik di dalam kantor maupun di lingkungan sekitar, termasuk di media sosial</li>
-            </ul>
+            <ol class="list-items">
+            <li>Menerima saran dan masukan dari siapapun tanpa melihat latar belakang jabatan, serta mengutamakan musyawarah mufakat</li>
+            <li>Memberikan apresiasi terhadap hasil kerja anggota tim ataupun rekan kerja yang lain</li>
+            <li>Menjaga sikap dan berlaku sopan santun terhadap siapa pun dalam pergaulan sosial baik di dalam kantor maupun di lingkungan sekitar, termasuk di media sosial</li>
+            </ol>
         </div>
         </details>
 
@@ -334,11 +402,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Suka menolong orang lain</span></summary>
         <div class="expander-content">
             <div class="success">Suka menolong orang lain</div>
-            <ul class="list-items">
-            <li>1. Saling membantu dalam penyelesaian pekerjaan dan memberikan solusi atas kesulitan rekan kerja yang lain</li>
-            <li>2. Menunjukkan kepedulian dan empati terhadap rekan kerja, atasan, atau bawahan ketika mengalami kesulitan</li>
-            <li>3. Memberikan bantuan materi maupun non materi bagi rekan kerja yang terkena musibah dan kesulitan lainnya.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Saling membantu dalam penyelesaian pekerjaan dan memberikan solusi atas kesulitan rekan kerja yang lain</li>
+            <li>Menunjukkan kepedulian dan empati terhadap rekan kerja, atasan, atau bawahan ketika mengalami kesulitan</li>
+            <li>Memberikan bantuan materi maupun non materi bagi rekan kerja yang terkena musibah dan kesulitan lainnya.</li>
+            </ol>
         </div>
         </details>
 
@@ -346,11 +414,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Membangun lingkungan kerja yang kondusif</span></summary>
         <div class="expander-content">
             <div class="success">Membangun lingkungan kerja yang kondusif</div>
-            <ul class="list-items">
-            <li>1. Mengembangkan sikap toleransi dan menghargai keanekaragaman budaya serta keyakinan dalam kehidupan sehari-hari baik di lingkungan kerja ataupun dalam bermasyarakat;</li>
-            <li>2. Menjaga hubungan baik dengan rekan kerja, atasan, bawahan dan stakeholders dengan menerapkan senyum, salam, dan sapa</li>
-            <li>3. Membuat suasana kantor yang nyaman.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Mengembangkan sikap toleransi dan menghargai keanekaragaman budaya serta keyakinan dalam kehidupan sehari-hari baik di lingkungan kerja ataupun dalam bermasyarakat;</li>
+            <li>Menjaga hubungan baik dengan rekan kerja, atasan, bawahan dan stakeholders dengan menerapkan senyum, salam, dan sapa</li>
+            <li>Membuat suasana kantor yang nyaman.</li>
+            </ol>
         </div>
         </details>
 
@@ -366,11 +434,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Memegang teguh ideologi Pancasila, Undang-Undang Dasar Negara Republik Indonesia tahun 1945, setia kepada Negara Kesatuan Republik Indonesia serta pemerintahan yang sah</span></summary>
         <div class="expander-content">
             <div class="success">Memegang teguh ideologi Pancasila, Undang-Undang Dasar Negara Republik Indonesia tahun 1945, setia kepada Negara Kesatuan Republik Indonesia serta pemerintahan yang sah</div>
-            <ul class="list-items">
-            <li>1. Menghayati dan mengamalkan nilai-nilai Pancasila dan Undang-Undang Dasar dalam kehidupan sehari-hari (di rumah, kantor, dan aktivitas sosial);</li>
-            <li>2. Setia dan taat kepada Negara Kesatuan Republik Indonesia; dan</li>
-            <li>3. Menjaga kehomatan dan kerahasiaan bangsa dan negara Indonesia dimanapun berada.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Menghayati dan mengamalkan nilai-nilai Pancasila dan Undang-Undang Dasar dalam kehidupan sehari-hari (di rumah, kantor, dan aktivitas sosial);</li>
+            <li>Setia dan taat kepada Negara Kesatuan Republik Indonesia; dan</li>
+            <li>Menjaga kehomatan dan kerahasiaan bangsa dan negara Indonesia dimanapun berada.</li>
+            </ol>
         </div>
         </details>
 
@@ -378,11 +446,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Menjaga nama baik sesama ASN, pimpinan, instansi, dan negara</span></summary>
         <div class="expander-content">
             <div class="success">Menjaga nama baik sesama ASN, pimpinan, instansi, dan negara</div>
-            <ul class="list-items">
-            <li>1. Menjadi contoh keteladanan yang baik (role model) dalam masyarakat</li>
-            <li>2. Menaati kode etik ASN dan peraturan yang berlaku dimanapun berada serta menjaga nama baik organisasi</li>
-            <li>3. Bijak dalam melakukan aktivitas di sosial media.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Menjadi contoh keteladanan yang baik (role model) dalam masyarakat</li>
+            <li>Menaati kode etik ASN dan peraturan yang berlaku dimanapun berada serta menjaga nama baik organisasi</li>
+            <li>Bijak dalam melakukan aktivitas di sosial media.</li>
+            </ol>
         </div>
         </details>
 
@@ -390,11 +458,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Menjaga rahasia jabatan dan negara</span></summary>
         <div class="expander-content">
             <div class="success">Menjaga rahasia jabatan dan negara</div>
-            <ul class="list-items">
-            <li>1. Memegang teguh rahasia jabatan dan negara;</li>
-            <li>2. Bersikap amanah</li>
-            <li>3. Berhati-hati dalam berbicara dan bersikap.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Memegang teguh rahasia jabatan dan negara;</li>
+            <li>Bersikap amanah</li>
+            <li>Berhati-hati dalam berbicara dan bersikap.</li>
+            </ol>
         </div>
         </details>
 
@@ -410,11 +478,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Cepat menyesuaikan diri menghadapi perubahan</span></summary>
         <div class="expander-content">
             <div class="success">Memegang teguh ideologi Pancasila, Undang-Undang Dasar Negara Republik Indonesia tahun 1945, setia kepada Negara Kesatuan Republik Indonesia serta pemerintahan yang sah</div>
-            <ul class="list-items">
-            <li>1. Cepat beradaptasi terhadap tuntutan perubahan dalam organisasi</li>
-            <li>2. Bersikap agile dan sigap menanggapi perubahan yang terjadi</li>
-            <li>3. Segera mengubah pola pikir dan cara kerja sesuai tuntutan perubahan.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Cepat beradaptasi terhadap tuntutan perubahan dalam organisasi</li>
+            <li>Bersikap agile dan sigap menanggapi perubahan yang terjadi</li>
+            <li>Segera mengubah pola pikir dan cara kerja sesuai tuntutan perubahan.</li>
+            </ol>
         </div>
         </details>
 
@@ -422,11 +490,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Terus berinovasi dan mengembangkan kreativitas</span></summary>
         <div class="expander-content">
             <div class="success">Terus berinovasi dan mengembangkan kreativitas</div>
-            <ul class="list-items">
-            <li>1. Tidak terpaku pada pola lama dan berani mencoba hal baru untuk mendapatkan hasil kerja yang lebih baik;</li>
-            <li>2. Mengembangkan ide/cara baru dalam menyelesaikan tugas/pekerjaan agar lebih efektif dan efisien; dan</li>
-            <li>3. Memanfaatkan berbagai media dalam mengembangkan kreativitas.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Tidak terpaku pada pola lama dan berani mencoba hal baru untuk mendapatkan hasil kerja yang lebih baik;</li>
+            <li>Mengembangkan ide/cara baru dalam menyelesaikan tugas/pekerjaan agar lebih efektif dan efisien; dan</li>
+            <li>Memanfaatkan berbagai media dalam mengembangkan kreativitas.</li>
+            </ol>
         </div>
         </details>
 
@@ -434,11 +502,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Bertindak proaktif</span></summary>
         <div class="expander-content">
             <div class="success">Bertindak proaktif</div>
-            <ul class="list-items">
-            <li>1. Secara mandiri mampu berkinerja baik tanpa menunggu perintah;</li>
-            <li>2. Gesit dalam mengambil inisiatif tindakan</li>
-            <li>3. Mampu melihat peluang untuk kinerja yang lebih baik.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Secara mandiri mampu berkinerja baik tanpa menunggu perintah;</li>
+            <li>Gesit dalam mengambil inisiatif tindakan</li>
+            <li>Mampu melihat peluang untuk kinerja yang lebih baik.</li>
+            </ol>
         </div>
         </details>
 
@@ -454,11 +522,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Memberi kesempatan kepada berbagai pihak untuk berkontribusi</span></summary>
         <div class="expander-content">
             <div class="success">Memberi kesempatan kepada berbagai pihak untuk berkontribusi</div>
-            <ul class="list-items">
-            <li>1. Pendelegasian tugas dan tanggung jawab kepada seluruh anggota tim kerja sesuai dengan proporsi dan kompetensi masing-masing</li>
-            <li>2. Mendukung pelaksanaan diskusi kelompok dalam menyelesaikan tugas organisasi</li>
-            <li>3. Memberikan kesempatan semua anggota tim ikut berpartisipasi dalam meningkatkan pencapaian tujuan organisasi. </li>
-            </ul>
+            <ol class="list-items">
+            <li>Pendelegasian tugas dan tanggung jawab kepada seluruh anggota tim kerja sesuai dengan proporsi dan kompetensi masing-masing</li>
+            <li>Mendukung pelaksanaan diskusi kelompok dalam menyelesaikan tugas organisasi</li>
+            <li>Memberikan kesempatan semua anggota tim ikut berpartisipasi dalam meningkatkan pencapaian tujuan organisasi. </li>
+            </ol>
         </div>
         </details>
 
@@ -466,11 +534,11 @@
         <summary><span class="summary-left"><span class="arrow"></span>Terbuka dalam bekerja sama untuk menghasilkan nilai tambah</span></summary>
         <div class="expander-content">
             <div class="success">Terbuka dalam bekerja sama untuk menghasilkan nilai tambah</div>
-            <ul class="list-items">
-            <li>1. Menjalin komunikasi dengan berbagai pihak dalam menjalankan tugas dan program kerja untuk peningkatan kinerja organisasi;</li>
-            <li>2. Melakukan evaluasi secara bersama agar pencapaian tujuan organisasi lebih efektif dan efisien di masa mendatang</li>
-            <li>3. Bersedia melakukan pekerjaan secara bersama untuk mencapai tujuan organisasi (tidak silo).</li>
-            </ul>
+            <ol class="list-items">
+            <li>Menjalin komunikasi dengan berbagai pihak dalam menjalankan tugas dan program kerja untuk peningkatan kinerja organisasi;</li>
+            <li>Melakukan evaluasi secara bersama agar pencapaian tujuan organisasi lebih efektif dan efisien di masa mendatang</li>
+            <li>Bersedia melakukan pekerjaan secara bersama untuk mencapai tujuan organisasi (tidak silo).</li>
+            </ol>
         </div>
         </details>
 
@@ -478,12 +546,64 @@
         <summary><span class="summary-left"><span class="arrow"></span>Menggerakkan pemanfaatan berbagai sumber daya untuk tujuan bersama</span></summary>
         <div class="expander-content">
             <div class="success">Menggerakkan pemanfaatan berbagai sumber daya untuk tujuan bersama</div>
-            <ul class="list-items">
-            <li>1. Menginventarisir seluruh sumber daya yang ada agar dapat dimanfaatkan untuk peningkatan tujuan organisasi;</li>
-            <li>2. Cermat melihat semua potensi yang ada dalam lingkungan kerja dan dimanfaatkan untuk kemajuan organisasi</li>
-            <li>3. Mengembangkan dan meningkatkan kapabilitas SDM yang ada untuk meningkatkan capaian organisasi.</li>
-            </ul>
+            <ol class="list-items">
+            <li>Menginventarisir seluruh sumber daya yang ada agar dapat dimanfaatkan untuk peningkatan tujuan organisasi;</li>
+            <li>Cermat melihat semua potensi yang ada dalam lingkungan kerja dan dimanfaatkan untuk kemajuan organisasi</li>
+            <li>Mengembangkan dan meningkatkan kapabilitas SDM yang ada untuk meningkatkan capaian organisasi.</li>
+            </ol>
         </div>
+        </details>
+
+    </section>
+
+    <section class="card" aria-labelledby="container-heading">
+      <div class="header">
+        <h2 id="container-heading"><span class="divider"></span> Lima (5) Budaya Organisasi BPS <span class="divider"></span></h2>
+      </div>
+      <br>
+        <details>
+        <summary><span class="summary-left"><span class="arrow"></span><i>Be a Leader</i></span></summary>
+            <div class="expander-content">
+                <p>
+                    Budaya ini mendorong setiap pegawai untuk menjadi pemimpin dalam tugas dan tanggung jawab, bukan hanya sebagai pengikut. Hal ini bertujuan untuk menciptakan lingkungan kerja yang proaktif dan inovatif.
+                </p>
+            </div>
+        </details>
+
+        <details>
+        <summary><span class="summary-left"><span class="arrow"></span>Inovasi</span></summary>
+            <div class="expander-content">
+                <p>
+                    Inovasi tanpa henti menjadi salah satu pilar penting di BPS. Pegawai didorong untuk terus mencari cara baru dan lebih baik dalam melakukan pekerjaan, serta beradaptasi dengan perubahan yang cepat di lingkungan kerja.
+                </p>
+            </div>
+        </details>
+
+        <details>
+        <summary><span class="summary-left"><span class="arrow"></span>KKD (Komunikasi, Kolaborasi, dan Diplomasi)</span></summary>
+            <div class="expander-content">
+                <p>
+                    KKD menekankan pentingnya komunikasi yang efektif, kolaborasi antar tim, dan kemampuan diplomasi dalam berinteraksi dengan berbagai pihak. Ini membantu dalam membangun hubungan yang baik dan memfasilitasi kerja sama yang produktif.
+                </p>
+            </div>
+        </details>
+
+        <details>
+        <summary><span class="summary-left"><span class="arrow"></span>Kualitas Data</span></summary>
+            <div class="expander-content">
+                <p>
+                    BPS berkomitmen untuk menjaga kualitas data yang tinggi. Setiap pegawai diharapkan untuk memastikan bahwa data yang dihasilkan akurat, relevan, dan dapat dipercaya, sehingga dapat memberikan informasi yang berguna bagi pengambilan keputusan.
+                </p>
+            </div>
+        </details>
+
+        <details>
+        <summary><span class="summary-left"><span class="arrow"></span>Kerja Keras dan Kerja Cerdas</span></summary>
+            <div class="expander-content">
+                <p>
+                    Budaya ini mengajak pegawai untuk tidak hanya bekerja keras, tetapi juga bekerja dengan cerdas. Ini berarti menggunakan strategi dan alat yang tepat untuk meningkatkan efisiensi dan efektivitas dalam pekerjaan.
+                </p>
+            </div>
         </details>
 
     </section>
