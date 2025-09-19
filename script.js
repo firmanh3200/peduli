@@ -63,6 +63,16 @@ const tabData = {
             'Accordion Item #4 for Tab Six',
             'Accordion Item #5 for Tab Six'
         ]
+    },
+    tab7: {
+        title: 'Tab Seven',
+        accordions: [
+            'Accordion Item #1 for Tab Six',
+            'Accordion Item #2 for Tab Six',
+            'Accordion Item #3 for Tab Six',
+            'Accordion Item #4 for Tab Six',
+            'Accordion Item #5 for Tab Six'
+        ]
     }
 };
 
