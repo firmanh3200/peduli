@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEKPPP Mandiri</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --accent-color: #198754;
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #0d6efd, #0056b3);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        
+        .hero-title {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            border: none;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+        
+        .badge-custom {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .table-custom {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .table-custom thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .table-custom tbody tr:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+        
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+        
+        .nav-pills .nav-link {
+            border-radius: 30px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(13, 110, 253, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(0, 0, 0, 0.125);
+        }
+        
+        .rating-card {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .rating-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .rating-a { background-color: rgba(25, 135, 84, 0.1); }
+        .rating-b { background-color: rgba(13, 202, 240, 0.1); }
+        .rating-c { background-color: rgba(255, 193, 7, 0.1); }
+        .rating-d { background-color: rgba(255, 128, 0, 0.1); }
+        .rating-e { background-color: rgba(220, 53, 69, 0.1); }
+        .rating-f { background-color: rgba(108, 117, 125, 0.1); }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 40px 0;
+            }
+            
+            .timeline {
+                padding-left: 20px;
+            }
+            
+            .timeline-item::before {
+                left: -25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">PEKPPP Mandiri</h1>
+                    <p class="lead">Sistem Evaluasi Kinerja Penyelenggaraan Pelayanan Publik yang komprehensif untuk meningkatkan kualitas pelayanan di seluruh Indonesia.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="container mb-5">
+        <!-- Tujuan Section -->
+        <section class="mb-5">
+            <h2 class="section-title">Tujuan PEKPPP Mandiri</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p class="lead">Kegiatan ini bertujuan untuk memperluas pelaksanaan PEKPPP pada seluruh ruang lingkup pelayanan (barang, jasa, dan administratif) secara mandiri oleh penyelenggara.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tahapan Section -->
+        <section class="mb-5">
+            <h2 class="section-title">Tahapan Pelaksanaan</h2>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <i class="bi bi-clipboard-data me-2"></i>Pra PEKPPP
+                        </div>
+                        <div class="card-body">
+                            <p>Pengukuran gambaran awal untuk mengukur sembilan aspek:</p>
+                            <ul>
+                                <li>Kinerja</li>
+                                <li>Kebijakan</li>
+                                <li>Partisipasi masyarakat</li>
+                                <li>Akses</li>
+                                <li>Profesionalisme SDM</li>
+                                <li>Sarana prasarana</li>
+                                <li>Digitalisasi</li>
+                                <li>Pengelolaan pengaduan</li>
+                                <li>Inovasi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <i class="bi bi-people me-2"></i>Pembinaan
+                        </div>
+                        <div class="card-body">
+                            <p>Peningkatan kualitas berdasarkan hasil Pra PEKPPP melalui:</p>
+                            <ul>
+                                <li>Sosialisasi</li>
+                                <li>Pendampingan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <i class="bi bi-clipboard-check me-2"></i>Pelaksanaan Evaluasi
+                        </div>
+                        <div class="card-body">
+                            <p>Mengukur dampak setelah intervensi pembinaan dan menghasilkan:</p>
+                            <div class="alert alert-info">
+                                <i class="bi bi-graph-up me-2"></i>
+                                <strong>Nilai Indeks Pelayanan Publik (IPP)</strong>
+                            </div>
+                            <p>Nilai IPP digunakan untuk menentukan kategori kinerja pelayanan publik.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mekanisme Pelaksanaan Section -->
+        <section class="mb-5">
+            <h2 class="section-title">Mekanisme Pelaksanaan PEKPPP</h2>
+            <div class="accordion" id="mekanismeAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="bi bi-1-circle-fill me-2 text-primary"></i> Tahap 1: Persiapan
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#mekanismeAccordion">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Menentukan Unit Lokus Evaluasi (ULE) secara bertahap</li>
+                                <li>Menetapkan metode pengumpulan data (lapangan atau daring)</li>
+                                <li>Menetapkan anggaran dan waktu pelaksanaan</li>
+                                <li>Membentuk tim evaluator (minimal 2 orang per ULE), bisa melibatkan pihak internal (unit organisasi/pengawasan) atau eksternal</li>
+                                <li>Melakukan sosialisasi dan bimbingan teknis kepada evaluator dan ULE</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <i class="bi bi-2-circle-fill me-2 text-primary"></i> Tahap 2: Pelaksanaan
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#mekanismeAccordion">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Menginformasikan jadwal PEKPPP minimal H-7 kepada ULE dan evaluator</li>
+                                <li>Menjelaskan maksud dan tujuan penilaian dalam pertemuan pendahuluan</li>
+                                <li>Melaksanakan PEKPPP sesuai metode yang ditetapkan</li>
+                                <li>Menyusun dan menandatangani berita acara hasil PEKPPP</li>
+                                <li>Mengolah dan menganalisis data dari formulir F-01, F-02, dan F-03 untuk memperoleh IPP</li>
+                                <li>Memberikan penilaian IPP dan kategori</li>
+                                <li>Menyusun pemeringkatan kinerja dan Laporan Hasil PEKPPP</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <i class="bi bi-3-circle-fill me-2 text-primary"></i> Tahap 3: Penyampaian Hasil, Rekomendasi, dan Tindak Lanjut
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#mekanismeAccordion">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Penyelenggara PEKPPP membuat laporan hasil untuk disampaikan kepada ULE sebagai dasar perbaikan</li>
+                                <li>Laporan memuat rekomendasi perbaikan yang harus ditindaklanjuti dalam jangka waktu tertentu</li>
+                                <li>ULE wajib menyampaikan laporan tindak lanjut kepada Penyelenggara Evaluasi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <i class="bi bi-4-circle-fill me-2 text-primary"></i> Tahap 4: Pemeringkatan dan Pemberian Penghargaan
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#mekanismeAccordion">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Pemeringkatan dilakukan dengan mengurutkan nilai IPP dari tertinggi hingga terendah</li>
+                                <li>Berdasarkan pemeringkatan, penyelenggara memberikan penghargaan kepada ULE sesuai kemampuannya</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instrumen dan Metodologi Section -->
+        <section class="mb-5">
+            <h2 class="section-title">Instrumen dan Metodologi Penilaian</h2>
+            
+            <!-- Prinsip-Prinsip Evaluasi -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="bi bi-award me-2"></i>Prinsip-Prinsip Evaluasi
+                </div>
+                <div class="card-body">
+                    <p>Penyusunan instrumen PEKPPP didasarkan pada enam prinsip utama:</p>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <div class="badge bg-primary rounded-circle p-2 me-3">
+                                    <i class="bi bi-1"></i>
+                                </div>
+                                <div>
+                                    <h5>Keadilan</h5>
+                                    <p>Persamaan hak dan perlakuan tanpa diskriminasi.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <div class="badge bg-primary rounded-circle p-2 me-3">
+                                    <i class="bi bi-2"></i>
+                                </div>
+                                <div>
+                                    <h5>Partisipasi</h5>
+                                    <p>Keterlibatan masyarakat dalam seluruh siklus pelayanan publik.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <div class="badge bg-primary rounded-circle p-2 me-3">
+                                    <i class="bi bi-3"></i>
+                                </div>
+                                <div>
+                                    <h5>Akuntabilitas</h5>
+                                    <p>Tanggung jawab pelaksana yang responsif terhadap publik.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <div class="badge bg-primary rounded-circle p-2 me-3">
+                                    <i class="bi bi-4"></i>
+                                </div>
+                                <div>
+                                    <h5>Transparansi</h5>
+                                    <p>Keterbukaan informasi dan proses kepada publik.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <div class="badge bg-primary rounded-circle p-2 me-3">
+                                    <i class="bi bi-5"></i>
+                                </div>
+                                <div>
+                                    <h5>Berdaya Guna</h5>
+                                    <p>Penggunaan sumber daya yang optimal dan ekonomis untuk kepentingan umum.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <div class="badge bg-primary rounded-circle p-2 me-3">
+                                    <i class="bi bi-6"></i>
+                                </div>
+                                <div>
+                                    <h5>Aksesibilitas</h5>
+                                    <p>Pelayanan yang mudah, sederhana, murah, dan terjangkau.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Struktur Instrumen -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="bi bi-file-earmark-text me-2"></i>Struktur Instrumen
+                </div>
+                <div class="card-body">
+                    <p>Instrumen PEKPPP terdiri dari tiga formulir yang saling melengkapi:</p>
+                    <div class="table-responsive">
+                        <table class="table table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Formulir</th>
+                                    <th>Definisi</th>
+                                    <th>Bobot</th>
+                                    <th>Jumlah Pertanyaan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>F-01</strong></td>
+                                    <td>Formulir self-assessment yang diisi oleh Unit Lokus untuk menggambarkan kondisi riil, dilengkapi dengan bukti dukung.</td>
+                                    <td>Tidak dibobot</td>
+                                    <td>30</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>F-02</strong></td>
+                                    <td>Formulir penilaian yang diisi oleh Evaluator berdasarkan pengamatan dan verifikasi bukti dukung untuk memperoleh data objektif.</td>
+                                    <td>75%</td>
+                                    <td>30</td>
+                                </tr>
+                                <tr>
+                                    <td><strong><a href="f03.html" target="_blank">F-03</a></strong></td>
+                                    <td>Formulir penilaian yang diisi oleh pengguna layanan berdasarkan pengalaman mereka untuk memperoleh data persepsi.</td>
+                                    <td>25%</td>
+                                    <td>14</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Aspek dan Indikator Penilaian -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="bi bi-bar-chart me-2"></i>Aspek dan Indikator Penilaian (Formulir F-02)
+                </div>
+                <div class="card-body">
+                    <p>Penilaian oleh evaluator (F-02) mencakup enam aspek utama dengan bobot yang telah ditentukan:</p>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Kebijakan Pelayanan <span class="badge bg-primary">24%</span></h5>
+                                    <p class="card-text">Ketersediaan dan kualitas Standar Pelayanan (SP), Maklumat Pelayanan, dan pelaksanaan Survei Kepuasan Masyarakat (SKM) serta tindak lanjutnya.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Profesionalisme SDM <span class="badge bg-primary">25%</span></h5>
+                                    <p class="card-text">Waktu pelayanan, ketersediaan kode etik dan budaya pelayanan, mekanisme peningkatan motivasi kerja, serta kriteria penghargaan bagi pelaksana.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sarana dan Prasarana <span class="badge bg-primary">18%</span></h5>
+                                    <p class="card-text">Ketersediaan dan kelayakan tempat parkir, ruang tunggu, toilet, fasilitas bagi kelompok rentan, serta sarana penunjang lainnya.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sistem Informasi Pelayanan Publik <span class="badge bg-primary">11%</span></h5>
+                                    <p class="card-text">Ketersediaan sistem informasi (termasuk SIPP Nasional), pendukung operasional, kualitas penggunaan SIPP elektronik, dan pemutakhiran data.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Konsultasi dan Pengaduan <span class="badge bg-primary">10%</span></h5>
+                                    <p class="card-text">Ketersediaan sarana konsultasi dan pengaduan (termasuk SP4N-LAPOR!), akuntabilitas penanganan, dan persentase tindak lanjut.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Inovasi <span class="badge bg-primary">12%</span></h5>
+                                    <p class="card-text">Penciptaan inovasi pelayanan publik, keikutsertaan dalam kompetisi, serta ketersediaan sumber daya untuk keberlanjutan inovasi.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Metode Perhitungan dan Kategorisasi IPP -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="bi bi-calculator me-2"></i>Metode Perhitungan dan Kategorisasi IPP
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <h5>Perhitungan Nilai</h5>
+                            <ul>
+                                <li><strong>Nilai per Indikator:</strong> Nilai pada formulir (F-02 atau F-03) dikalikan dengan bobot indikator masing-masing.</li>
+                                <li><strong>Nilai per Aspek:</strong> Jumlah dari seluruh nilai per indikator dalam satu aspek.</li>
+                                <li><strong>Nilai Indeks Formulir:</strong> Penjumlahan nilai seluruh aspek dalam satu formulir.</li>
+                                <li><strong>Nilai Indeks Pelayanan Publik (IPP):</strong> Dihitung menggunakan rumus: <br>
+                                <div class="alert alert-info mt-2">
+                                    <strong>IPP = (75% x Nilai Indeks F-02) + (25% x Nilai Indeks F-03)</strong>
+                                </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <h5>Kategori Indeks Pelayanan Publik</h5>
+                            <div class="rating-card rating-a">
+                                <h5>A (4.51 - 5.00) - Pelayanan Prima</h5>
+                                <p>Telah menerapkan seluruh aspek penyelenggaraan pelayanan publik yang baik.</p>
+                            </div>
+                            <div class="rating-card rating-b">
+                                <h5>A- (4.01 - 4.50) - Sangat Baik</h5>
+                                <p>Telah menerapkan seluruh aspek, namun masih ada kekurangan di beberapa indikator.</p>
+                            </div>
+                            <div class="rating-card rating-c">
+                                <h5>B (3.51 - 4.00) - Baik</h5>
+                                <p>Sudah menerapkan kebijakan dan memiliki sarana prasarana yang baik, namun inovasi belum optimal.</p>
+                            </div>
+                            <div class="rating-card rating-d">
+                                <h5>C (2.51 - 3.00) - Cukup</h5>
+                                <p>Implementasi kebijakan belum optimal, kapasitas SDM dan sarana prasarana perlu pengembangan.</p>
+                            </div>
+                            <div class="rating-card rating-e">
+                                <h5>D-F (0.00 - 2.50) - Buruk/Gagal</h5>
+                                <p>Menjadi prioritas pembinaan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Peran dan Tanggung Jawab Section -->
+        <section class="mb-5">
+            <h2 class="section-title">Peran dan Tanggung Jawab Para Pihak</h2>
+            <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-penyelenggara-tab" data-bs-toggle="pill" data-bs-target="#pills-penyelenggara" type="button" role="tab" aria-controls="pills-penyelenggara" aria-selected="true">
+                        <i class="bi bi-building me-2"></i>Penyelenggara PEKPPP
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-evaluator-tab" data-bs-toggle="pill" data-bs-target="#pills-evaluator" type="button" role="tab" aria-controls="pills-evaluator" aria-selected="false">
+                        <i class="bi bi-clipboard-check me-2"></i>Evaluator
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-ule-tab" data-bs-toggle="pill" data-bs-target="#pills-ule" type="button" role="tab" aria-controls="pills-ule" aria-selected="false">
+                        <i class="bi bi-geo-alt me-2"></i>Unit Lokus Evaluasi (ULE)
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-penyelenggara" role="tabpanel" aria-labelledby="pills-penyelenggara-tab">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul>
+                                <li>Menyiapkan seluruh kebutuhan pelaksanaan PEKPPP</li>
+                                <li>Melakukan PEKPPP, baik secara mandiri maupun bekerja sama dengan pihak lain</li>
+                                <li>Melakukan verifikasi data hasil evaluasi</li>
+                                <li>Melakukan pemeringkatan kinerja ULE</li>
+                                <li>Melakukan publikasi hasil PEKPPP</li>
+                                <li>Memberikan penghargaan kepada ULE berprestasi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-evaluator" role="tabpanel" aria-labelledby="pills-evaluator-tab">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul>
+                                <li>Melakukan penilaian secara objektif dan bebas nilai</li>
+                                <li>Memegang teguh pakta integritas</li>
+                                <li>Mendaftarkan akun dalam Sistem Informasi Pelayanan Publik</li>
+                                <li>Membuat Berita Acara Hasil PEKPPP</li>
+                                <li>Membuat Laporan Hasil PEKPPP yang berisi rekomendasi perbaikan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-ule" role="tabpanel" aria-labelledby="pills-ule-tab">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul>
+                                <li>Menyiapkan bukti dukung sesuai dengan indikator pada formulir penilaian</li>
+                                <li>Menjelaskan kondisi riil pelayanan publik kepada evaluator</li>
+                                <li>Menandatangani berita acara hasil PEKPPP</li>
+                                <li>Melakukan perbaikan pelayanan publik berdasarkan hasil PEKPPP</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

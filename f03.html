@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Penilaian dari Masyarakat - PEKPPP F-03</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5fb4;
+            --secondary-color: #3584e4;
+            --accent-color: #f6d32d;
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+            --success-color: #26a269;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0 1.5rem;
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background-color: #e9f7fe;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .input-field {
+            border-bottom: 1px dashed #ced4da;
+            padding: 0.5rem 0;
+            margin-bottom: 1rem;
+        }
+        
+        .evaluation-item {
+            background-color: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .evaluation-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        
+        .item-number {
+            background-color: var(--accent-color);
+            color: var(--dark-text);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .rating-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        
+        .rating-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .rating-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .rating-option input {
+            display: none;
+        }
+        
+        .rating-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .rating-option input:checked ~ .rating-circle {
+            background-color: var(--success-color);
+            color: white;
+            border-color: var(--success-color);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #6c757d;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .rating-options {
+                flex-wrap: wrap;
+            }
+            
+            .rating-option {
+                margin-bottom: 0.5rem;
+                flex: 0 0 16.66%;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>FORMULIR PENILAIAN DARI MASYARAKAT</h1>
+            <p class="mb-0">LEMBAR PENILAIAN PEKPPP F-03 A (LURING)</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h2 class="text-center mb-4">Form Responden</h2>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="instansi" class="form-label">Instansi:</label>
+                        <div class="input-field">
+                            <input type="text" class="form-control border-0" id="instansi" placeholder="Masukkan nama instansi">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="unitLokus" class="form-label">Unit Lokus:</label>
+                        <div class="input-field">
+                            <input type="text" class="form-control border-0" id="unitLokus" placeholder="Masukkan unit lokus">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <h5><i class="fas fa-info-circle me-2"></i>PETUNJUK SINGKAT PENGISIAN KUESIONER</h5>
+                <p class="mb-0">Setiap Responden wajib mengisi kolom penilaian yang disediakan secara objektif pada angka yang dianggap sesuai. Beri tanda silang (X) pada angka yang paling sesuai dengan penilaian Anda</p>
+            </div>
+            
+            <form id="evaluationForm">
+                <!-- I. KEBIJAKAN PELAYANAN -->
+                <div class="section-title">
+                    <i class="fas fa-clipboard-list me-2"></i>I. KEBIJAKAN PELAYANAN
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">1</div>
+                        <div class="flex-grow-1">
+                            <p>Persyaratan yang diperlukan untuk memperoleh layanan mudah dipenuhi.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">2</div>
+                        <div class="flex-grow-1">
+                            <p>Prosedur yang dilalui untuk memperoleh layanan mudah.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">3</div>
+                        <div class="flex-grow-1">
+                            <p>Tarif yang diinformasikan sesuai dengan yang dibayarkan.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">4</div>
+                        <div class="flex-grow-1">
+                            <p>Lama waktu pelayanan yang diinformasikan sesuai dengan waktu penyelesaian.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- II. PROFESIONALISME SDM -->
+                <div class="section-title">
+                    <i class="fas fa-user-tie me-2"></i>II. PROFESIONALISME SDM
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">5</div>
+                        <div class="flex-grow-1">
+                            <p>Waktu pelayanan (jam kerja layanan tanpa jeda waktu istirahat, layanan informasi, konsultasi dan pengaduan, customer service) sesuai dengan yang ditetapkan.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">6</div>
+                        <div class="flex-grow-1">
+                            <p>Petugas layanan responsif dalam memberikan pelayanan.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">7</div>
+                        <div class="flex-grow-1">
+                            <p>Sikap petugas mencerminkan pelayanan yang berkualitas.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- III. SARANA PRASARANA -->
+                <div class="section-title">
+                    <i class="fas fa-building me-2"></i>III. SARANA PRASARANA
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">8</div>
+                        <div class="flex-grow-1">
+                            <p>Tempat parkir yang disediakan memadai.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">9</div>
+                        <div class="flex-grow-1">
+                            <p>Sarana ruang tunggu layanan nyaman.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">10</div>
+                        <div class="flex-grow-1">
+                            <p>Sarana toilet khusus pengguna layanan bersih dan memadai.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">11</div>
+                        <div class="flex-grow-1">
+                            <p>Ketersediaan sarana prasarana penunjang lainnya yang memadai (contoh: ruang laktasi/nursery, arena bermain anak, kantin/fotocopy/toko ATK, wifi, prioritas lansia, dst).</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- IV. SISTEM INFORMASI PELAYANAN PUBLIK -->
+                <div class="section-title">
+                    <i class="fas fa-info-circle me-2"></i>IV. SISTEM INFORMASI PELAYANAN PUBLIK
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">12</div>
+                        <div class="flex-grow-1">
+                            <p>Akses informasi layanan secara daring mudah (website, aplikasi, media sosial dan sejenisnya).</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">13</div>
+                        <div class="flex-grow-1">
+                            <p>Kemudahan akses informasi di lokasi layanan (tatap muka).</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- V. KONSULTASI DAN PENGADUAN -->
+                <div class="section-title">
+                    <i class="fas fa-comments me-2"></i>V. KONSULTASI DAN PENGADUAN
+                </div>
+                
+                <div class="evaluation-item">
+                    <div class="d-flex align-items-start">
+                        <div class="item-number">14</div>
+                        <div class="flex-grow-1">
+                            <p>Tersedia konsultasi dan pengaduan layanan yang memadai dan mudah diakses.</p>
+                            <div class="rating-options">
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="0">
+                                    <div class="rating-circle">0</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="1">
+                                    <div class="rating-circle">1</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="2">
+                                    <div class="rating-circle">2</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="3">
+                                    <div class="rating-circle">3</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="4">
+                                    <div class="rating-circle">4</div>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="5">
+                                    <div class="rating-circle">5</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane me-2"></i>Kirim Penilaian
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2023 PEKPPP - Formulir Penilaian dari Masyarakat</p>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('evaluationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check if all questions are answered
+            let allAnswered = true;
+            const questions = document.querySelectorAll('input[type="radio"][name^="q"]');
+            const questionNames = new Set();
+            
+            questions.forEach(question => {
+                questionNames.add(question.name);
+            });
+            
+            questionNames.forEach(name => {
+                const answered = document.querySelector(`input[type="radio"][name="${name}"]:checked`);
+                if (!answered) {
+                    allAnswered = false;
+                }
+            });
+            
+            if (!allAnswered) {
+                alert('Mohon jawab semua pertanyaan sebelum mengirimkan formulir.');
+                return;
+            }
+            
+            // If all questions are answered, show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'alert alert-success mt-4';
+            successMessage.innerHTML = '<i class="fas fa-check-circle me-2"></i>Terima kasih! Penilaian Anda telah berhasil dikirim.';
+            
+            this.parentNode.appendChild(successMessage);
+            
+            // Scroll to the success message
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            
+            // Disable the submit button
+            document.querySelector('.submit-btn').disabled = true;
+        });
+    </script>
+</body>
+</html>

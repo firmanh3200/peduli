@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14 Komponen Standar Pelayanan (Permenpan RB No. 15 Tahun 2023)</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Variabel & Gaya Global --- */
+        :root {
+            --primary-color: #005A9C;
+            --secondary-color: #00A8E8;
+            --accent-color: #00C9A7;
+            --background-color: #F4F7F6;
+            --card-background: #FFFFFF;
+            --text-color: #333333;
+            --light-text-color: #666666;
+            --border-color: #E0E0E0;
+            --shadow: 0 4px 15px rgba(0, 90, 156, 0.1);
+            --shadow-hover: 0 8px 25px rgba(0, 90, 156, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Header yang Menempel (Sticky) --- */
+        .main-header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-background);
+            padding: 20px 20px;
+            text-align: center;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .main-header h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .main-header p {
+            color: var(--light-text-color);
+            font-size: 1rem;
+        }
+
+        /* --- Container Utama --- */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 40px; /* Tambah padding untuk memberi ruang bagi tombol */
+        }
+
+        /* --- Slider Container --- */
+        .slider-wrapper {
+            position: relative;
+            overflow: hidden; /* Penting untuk slider */
+            margin: 0 -40px; /* Tarik slider keluar untuk mengimbangi padding container */
+            padding: 0 40px; /* Kembalikan padding di dalam slider */
+            margin-bottom: 40px;
+        }
+
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* --- Daftar Komponen --- */
+        .components-list {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+        
+        .component-item {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 0 0 calc(25% - 20px); /* 4 card per layar */
+            margin-right: 20px;
+            position: relative; /* Penting untuk overlay */
+            cursor: pointer;
+        }
+
+        .component-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--secondary-color);
+        }
+        
+        .component-item h2 {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .component-item h2 i {
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .component-item p {
+            color: var(--light-text-color);
+            font-size: 1rem;
+        }
+
+        /* --- Overlay Popup (DESAIN BARU) --- */
+        .popup-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 90, 156, 0.95);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .popup-content strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .component-item:hover .popup-content {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* --- Slider Navigasi (POSISI DIPERBAIKI) --- */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+
+        .slider-nav:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .slider-nav.prev {
+            left: 10px; /* Posisikan di dalam padding slider */
+        }
+
+        .slider-nav.next {
+            right: 10px; /* Posisikan di dalam padding slider */
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--light-text-color);
+        }
+
+        /* --- Responsivitas --- */
+        @media (max-width: 1023px) {
+            /* Kembalikan tampilan normal untuk mobile */
+            .container {
+                padding: 0 20px;
+            }
+            .slider-wrapper {
+                overflow: visible;
+                margin: 0;
+                padding: 0;
+            }
+            .components-list {
+                flex-direction: column;
+            }
+            .component-item {
+                flex: 1 1 auto;
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .slider-nav {
+                display: none; /* Sembunyikan navigasi slider */
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+            .container {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+            .main-header h1 {
+                font-size: 1.5rem;
+            }
+            .component-item h2 {
+                font-size: 1.1rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .component-item h2 i {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>14 Komponen Standar Pelayanan</h1>
+        <p>Sesuai Peraturan Menteri PANRB Nomor 15 Tahun 2023</p>
+    </header>
+
+    <div class="container">
+        <div class="slider-wrapper">
+            <ul class="components-list" id="slider-track">
+                <li class="component-item">
+                    <h2><i class="fas fa-clipboard-list"></i>1. Persyaratan Pelayanan</h2>
+                    <p>Syarat yang harus dipenuhi penerima layanan.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Fotokopi KTP, Kartu Keluarga (KK), pas foto, formulir permohonan yang telah diisi, dan surat pengantar dari RT/RW.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-sitemap"></i>2. Sistem, Mekanisme, Prosedur</h2>
+                    <p>Urutan tahapan kegiatan dari awal hingga selesai.</p>
+                    <div class="popup-content">
+                        <strong>Contoh Alur:</strong>
+                        Pengambilan formulir -> Pengisian & verifikasi berkas -> Pembayaran (jika ada) -> Proses -> Penerbitan dokumen.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-clock"></i>3. Jangka Waktu Penyelesaian</h2>
+                    <p>Waktu yang dibutuhkan untuk menyelesaikan pelayanan.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Penerbitan SIM selesai dalam 1 jam, pengurusan paspor 3-5 hari kerja, layanan kecamatan maksimal 2 hari.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-money-bill-wave"></i>4. Biaya/Tarif</h2>
+                    <p>Besarnya biaya yang harus dibayar sesuai ketentuan.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Biaya pembuatan SIM A sebesar Rp 120.000, atau pelayanan administrasi kependudukan gratis sesuai UU.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-box"></i>5. Produk Pelayanan</h2>
+                    <p>Hasil akhir yang diterima pemohon setelah proses selesai.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Kartu Tanda Penduduk Elektronik (e-KTP), Buku Nikah, Sertifikat Tanah, Surat Izin Usaha Mikro (IUMK).
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-building"></i>6. Sarana dan Prasarana</h2>
+                    <p>Fasilitas penunjang untuk kelancaran dan kenyamanan.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Ruang tunggu nyaman, AC, toilet bersih, area bermain anak, kursi roda, loket prioritas, dan Wi-Fi gratis.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-user-graduate"></i>7. Kompetensi Pelaksana</h2>
+                    <p>Kemampuan dan keahlian petugas pelayanan.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Petugas telah mengikuti pelatihan pelayanan prima, memiliki sertifikat komptensi, dan mampu mengoperasikan sistem.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-comment-dots"></i>8. Pengaduan, Saran, Masukan</h2>
+                    <p>Saluran mudah diakses untuk menyampaikan masukan.</p>
+                    <div class="popup-content">
+                        <strong>Contoh Saluran:</strong>
+                        Kotak saran, nomor hotline (call center), alamat email, akun media sosial, dan aplikasi LAPOR!.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-shield-alt"></i>9. Jaminan Keamanan & Keselamatan</h2>
+                    <p>Upaya memastikan proses pelayanan aman dan tertib.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Keberadaan petugas keamanan, pemasangan CCTV, sistem antrian teratur, dan kebijakan perlindungan data pribadi.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-balance-scale"></i>10. Hak dan Kewajiban</h2>
+                    <p>Daftar hak dan kewajiban bagi penerima dan penyedia layanan.</p>
+                    <div class="popup-content">
+                        <strong>Contoh Hak:</strong> Mendapat pelayanan yang sama.
+                        <strong>Contoh Kewajiban:</strong> Mengisi data dengan benar dan jujur.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-bullhorn"></i>11. Maklumat Pelayanan</h2>
+                    <p>Pernyataan komitmen dari pimpinan instansi.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Poster atau plakat besar di ruang pelayanan yang berisi janji layanan dan mencantumkan 14 komponen standar.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-smile"></i>12. Penilaian Kepuasan Pelayanan</h2>
+                    <p>Mekanisme untuk mengukur tingkat kepuasan masyarakat.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Survei kepuasan via QR Code, SMS polling setelah layanan, atau memberikan kuisioner di loket.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-user-tie"></i>13. Kode Etik & Perilaku Pelaksana</h2>
+                    <p>Aturan yang mengatur perilaku petugas pelayanan.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Berpakaian rapi dan sopan, bersikap ramah, tidak meminta imbalan, jujur, dan bertanggung jawab.
+                    </div>
+                </li>
+                <li class="component-item">
+                    <h2><i class="fas fa-network-wired"></i>14. Integrasi Layanan Digital</h2>
+                    <p>Keterhubungan layanan dengan platform digital pemerintah.</p>
+                    <div class="popup-content">
+                        <strong>Contoh:</strong>
+                        Layanan terintegrasi dengan portal OSS (izin usaha), aplikasi Cek Bansos, atau Sistem Informasi Kependudukan.
+                    </div>
+                </li>
+            </ul>
+            <button class="slider-nav prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-nav next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <footer class="footer">
+            <p>Sumber: Peraturan Menteri Pendayagunaan Aparatur Negara dan Reformasi Birokrasi Nomor 15 Tahun 2023 tentang Standar Pelayanan pada Instansi Pemerintah.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderTrack = document.getElementById('slider-track');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const items = document.querySelectorAll('.component-item');
+            
+            // Pastikan slider hanya berjalan di layar lebar
+            const isWideScreen = window.innerWidth > 1023;
+
+            if (isWideScreen && items.length > 0) {
+                const itemWidth = items[0].offsetWidth + 20; // Lebar item + margin
+                const itemsPerView = 4;
+                let currentIndex = 0;
+                const maxIndex = Math.max(0, items.length - itemsPerView);
+
+                function updateSliderPosition() {
+                    const offset = -currentIndex * itemWidth;
+                    sliderTrack.style.transform = `translateX(${offset}px)`;
+                }
+
+                nextBtn.addEventListener('click', () => {
+                    if (currentIndex < maxIndex) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0; // Kembali ke awal
+                    }
+                    updateSliderPosition();
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                    } else {
+                        currentIndex = maxIndex; // Loncat ke akhir
+                    }
+                    updateSliderPosition();
+                });
+
+                // Optional: Auto-slide
+                let autoSlideInterval = setInterval(() => {
+                    nextBtn.click();
+                }, 5000); // Ganti slide setiap 5 detik
+
+                // Pause auto-slide saat hover
+                const sliderWrapper = document.querySelector('.slider-wrapper');
+                sliderWrapper.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+                sliderWrapper.addEventListener('mouseleave', () => {
+                    autoSlideInterval = setInterval(() => {
+                        nextBtn.click();
+                    }, 5000);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

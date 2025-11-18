@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumen Manajemen Risiko - ISO 31000</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --danger-color: #ef4444;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --info-color: #3b82f6;
+            --light-bg: #f8fafc;
+            --dark-text: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 12px 12px 0 0 !important;
+            padding: 1.25rem;
+            font-weight: 600;
+        }
+
+        .risk-level-high {
+            background-color: var(--danger-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .risk-level-medium {
+            background-color: var(--warning-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .risk-level-low {
+            background-color: var(--success-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .nav-pills .nav-link {
+            color: var(--dark-text);
+            border-radius: 8px;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--border-color);
+        }
+
+        .risk-matrix {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .risk-matrix-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .risk-matrix-cell:hover {
+            transform: scale(1.05);
+        }
+
+        .matrix-low {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .matrix-medium {
+            background-color: #fed7aa;
+            color: #92400e;
+        }
+
+        .matrix-high {
+            background-color: #fecaca;
+            color: #991b1b;
+        }
+
+        .matrix-extreme {
+            background-color: #fca5a5;
+            color: #7f1d1d;
+        }
+
+        .progress-custom {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: var(--border-color);
+        }
+
+        .progress-bar-custom {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+
+        .floating-action {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .btn-custom {
+            border-radius: 8px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(30, 58, 138, 0.25);
+        }
+
+        @media print {
+            .floating-action {
+                display: none;
+            }
+            
+            .card {
+                break-inside: avoid;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-5 fw-bold mb-3">
+                        <i class="fas fa-shield-alt me-3"></i>
+                        Dokumen Manajemen Risiko
+                    </h1>
+                    <p class="lead mb-0">
+                        Berdasarkan Standar ISO 31000:2018
+                    </p>
+                    <hr class="my-4" style="border-color: rgba(255,255,255,0.3);">
+                    <h4 class="mb-2">Nama Kegiatan:</h4>
+                    <p class="h5 mb-0">"Pelayanan dan Pengembangan Diseminasi Informasi Statistik"</p>
+                    <h4 class="mb-2 mt-3">Indikator Kinerja Kegiatan:</h4>
+                    <p class="h5 mb-0">"Persentase Terselenggaranya Edukasi dan Promosi Statistik yang Efisien"</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fas fa-chart-line" style="font-size: 8rem; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="container mb-4">
+        <ul class="nav nav-pills justify-content-center" id="mainNav" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" data-bs-target="#overview" type="button">
+                    <i class="fas fa-home me-2"></i>Ringkasan
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="framework-tab" data-bs-toggle="pill" data-bs-target="#framework" type="button">
+                    <i class="fas fa-sitemap me-2"></i>Kerangka Kerja
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="identification-tab" data-bs-toggle="pill" data-bs-target="#identification" type="button">
+                    <i class="fas fa-search me-2"></i>Identifikasi Risiko
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="analysis-tab" data-bs-toggle="pill" data-bs-target="#analysis" type="button">
+                    <i class="fas fa-chart-bar me-2"></i>Analisis Risiko
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="treatment-tab" data-bs-toggle="pill" data-bs-target="#treatment" type="button">
+                    <i class="fas fa-cogs me-2"></i>Penanganan Risiko
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="register-tab" data-bs-toggle="pill" data-bs-target="#register" type="button">
+                    <i class="fas fa-table me-2"></i>Register Risiko
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="container mb-5">
+        <div class="tab-content" id="mainTabContent">
+            <!-- Overview Tab -->
+            <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                <div class="row fade-in">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Tujuan Manajemen Risiko</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-3">Memastikan terselenggaranya edukasi dan promosi statistik yang efisien melalui identifikasi, analisis, dan penanganan risiko secara sistematis.</p>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Meningkatkan efisiensi kegiatan</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Meminimalkan dampak negatif</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Meningkatkan kualitas layanan</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Memastikan keberlanjutan program</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-users me-2"></i>Pemangku Kepentingan</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <h6 class="fw-bold">Internal:</h6>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-user-tie me-2"></i>Manajemen</li>
+                                        <li><i class="fas fa-users me-2"></i>Tim Pelaksana</li>
+                                        <li><i class="fas fa-user-shield me-2"></i>Unit Pengendali Mutu</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold">Eksternal:</h6>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-graduation-cap me-2"></i>Masyarakat/Peserta</li>
+                                        <li><i class="fas fa-building me-2"></i>Instansi Pemerintah</li>
+                                        <li><i class="fas fa-handshake me-2"></i>Partner/Mitra</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Jadwal Pelaksanaan</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <h6 class="fw-bold">Tahap Perencanaan</h6>
+                                        <p class="text-muted mb-0">Januari - Februari 2024</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <h6 class="fw-bold">Tahap Pelaksanaan</h6>
+                                        <p class="text-muted mb-0">Maret - Oktober 2024</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <h6 class="fw-bold">Tahap Evaluasi</h6>
+                                        <p class="text-muted mb-0">November - Desember 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Risk Indicators -->
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-tachometer-alt me-2"></i>Key Risk Indicators (KRI)</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold">Efisiensi Anggaran</span>
+                                    <span class="text-muted">Target: >90%</span>
+                                </div>
+                                <div class="progress-custom">
+                                    <div class="progress-bar-custom bg-success" style="width: 85%"></div>
+                                </div>
+                                <small class="text-muted">Realisasi: 85%</small>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold">Kepuasan Peserta</span>
+                                    <span class="text-muted">Target: >85%</span>
+                                </div>
+                                <div class="progress-custom">
+                                    <div class="progress-bar-custom bg-info" style="width: 78%"></div>
+                                </div>
+                                <small class="text-muted">Realisasi: 78%</small>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold">Tingkat Kehadiran</span>
+                                    <span class="text-muted">Target: >80%</span>
+                                </div>
+                                <div class="progress-custom">
+                                    <div class="progress-bar-custom bg-warning" style="width: 72%"></div>
+                                </div>
+                                <small class="text-muted">Realisasi: 72%</small>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold">Pencapaian Target</span>
+                                    <span class="text-muted">Target: 100%</span>
+                                </div>
+                                <div class="progress-custom">
+                                    <div class="progress-bar-custom bg-primary" style="width: 65%"></div>
+                                </div>
+                                <small class="text-muted">Realisasi: 65%</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Framework Tab -->
+            <div class="tab-pane fade" id="framework" role="tabpanel">
+                <div class="row fade-in">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-cog me-2"></i>Kerangka Manajemen Risiko ISO 31000</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="accordion" id="frameworkAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#leadership">
+                                                <i class="fas fa-crown me-2"></i>Leadership & Komitmen
+                                            </button>
+                                        </h2>
+                                        <div id="leadership" class="accordion-collapse collapse show" data-bs-parent="#frameworkAccordion">
+                                            <div class="accordion-body">
+                                                <ul>
+                                                    <li>Manajemen menunjukkan komitmen terhadap manajemen risiko</li>
+                                                    <li>Penetapan kebijakan manajemen risiko</li>
+                                                    <li>Alokasi sumber daya yang memadai</li>
+                                                    <li>Pembinaan budaya manajemen risiko</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#integration">
+                                                <i class="fas fa-puzzle-piece me-2"></i>Integrasi
+                                            </button>
+                                        </h2>
+                                        <div id="integration" class="accordion-collapse collapse" data-bs-parent="#frameworkAccordion">
+                                            <div class="accordion-body">
+                                                <ul>
+                                                    <li>Integrasi manajemen risiko dalam proses bisnis</li>
+                                                    <li>Penyesuaian dengan strategi organisasi</li>
+                                                    <li>Penerapan dalam siklus perencanaan</li>
+                                                    <li>Keterlibatan semua level organisasi</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#design">
+                                                <i class="fas fa-drafting-compass me-2"></i>Desain
+                                            </button>
+                                        </h2>
+                                        <div id="design" class="accordion-collapse collapse" data-bs-parent="#frameworkAccordion">
+                                            <div class="accordion-body">
+                                                <ul>
+                                                    <li>Penetapan ruang lingkup manajemen risiko</li>
+                                                    <li>Pengembangan proses dan metode</li>
+                                                    <li>Penetapan kriteria risiko</li>
+                                                    <li>Pembuatan dokumentasi yang diperlukan</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Proses Manajemen Risiko</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="process-steps">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            1
+                                        </div>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0">Komunikasi & Konsultasi</h6>
+                                            <small class="text-muted">Melibatkan pemangku kepentingan</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            2
+                                        </div>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0">Pembentukan Konteks</h6>
+                                            <small class="text-muted">Menetapkan lingkup dan kriteria</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            3
+                                        </div>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0">Penilaian Risiko</h6>
+                                            <small class="text-muted">Identifikasi, analisis, evaluasi</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            4
+                                        </div>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0">Penanganan Risiko</h6>
+                                            <small class="text-muted">Memilih dan implementasi strategi</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            5
+                                        </div>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0">Pemantauan & Review</h6>
+                                            <small class="text-muted">Memantau efektivitas penanganan</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Appetite Statement -->
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-balance-scale me-2"></i>Pernyataan Nafsu Risiko</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 text-center mb-3">
+                                <div class="p-3 bg-success bg-opacity-10 rounded">
+                                    <i class="fas fa-shield-alt text-success" style="font-size: 3rem;"></i>
+                                    <h6 class="mt-3">Risiko Rendah</h6>
+                                    <p class="text-muted mb-0">Diterima sepenuhnya</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center mb-3">
+                                <div class="p-3 bg-warning bg-opacity-10 rounded">
+                                    <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+                                    <h6 class="mt-3">Risiko Sedang</h6>
+                                    <p class="text-muted mb-0">Diterima dengan mitigasi</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center mb-3">
+                                <div class="p-3 bg-danger bg-opacity-10 rounded">
+                                    <i class="fas fa-times-circle text-danger" style="font-size: 3rem;"></i>
+                                    <h6 class="mt-3">Risiko Tinggi</h6>
+                                    <p class="text-muted mb-0">Tidak diterima</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-info mt-3">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Kebijakan:</strong> Organisasi bersedia menerima risiko yang dapat dikendalikan dan memberikan manfaat yang seimbang dengan potensi kerugian.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Identification Tab -->
+            <div class="tab-pane fade" id="identification" role="tabpanel">
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-search me-2"></i>Metode Identifikasi Risiko</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <h6 class="fw-bold mb-3"><i class="fas fa-brain me-2"></i>Brainstorming</h6>
+                                <p>Sesi diskusi dengan tim untuk mengidentifikasi potensi risiko berdasarkan pengalaman dan pengetahuan kolektif.</p>
+                                <div class="bg-light p-3 rounded">
+                                    <small class="text-muted">Hasil: 15 risiko teridentifikasi</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h6 class="fw-bold mb-3"><i class="fas fa-sitemap me-2"></i>Analisis SWOT</h6>
+                                <p>Evaluasi kekuatan, kelemahan, peluang, dan ancaman dalam pelaksanaan kegiatan.</p>
+                                <div class="bg-light p-3 rounded">
+                                    <small class="text-muted">Hasil: 12 risiko teridentifikasi</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h6 class="fw-bold mb-3"><i class="fas fa-history me-2"></i>Analisis Historis</h6>
+                                <p>Review data historis dan pengalaman masa lalu untuk mengidentifikasi pola risiko.</p>
+                                <div class="bg-light p-3 rounded">
+                                    <small class="text-muted">Hasil: 8 risiko teridentifikasi</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h6 class="fw-bold mb-3"><i class="fas fa-comments me-2"></i>Wawancara Stakeholder</h6>
+                                <p>Wawancara mendalam dengan pemangku kepentingan untuk mendapatkan perspektif risiko.</p>
+                                <div class="bg-light p-3 rounded">
+                                    <small class="text-muted">Hasil: 10 risiko teridentifikasi</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Identified Risks -->
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-list me-2"></i>Daftar Risiko Teridentifikasi</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Kategori Risiko</th>
+                                        <th>Deskripsi Risiko</th>
+                                        <th>Pemicu</th>
+                                        <th>Dampak Potensial</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><span class="badge bg-danger">Operasional</span></td>
+                                        <td>Keterlambatan pelaksanaan kegiatan</td>
+                                        <td>Keterlambatan persiapan logistik</td>
+                                        <td>Gagal mencapai target KPI</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><span class="badge bg-warning">Keuangan</span></td>
+                                        <td>Overbudget dalam pelaksanaan</td>
+                                        <td>Perencanaan anggaran tidak akurat</td>
+                                        <td>Efisiensi anggaran menurun</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><span class="badge bg-info">SDM</span></td>
+                                        <td>Kurangnya kompetensi narasumber</td>
+                                        <td>Proses seleksi tidak ketat</td>
+                                        <td>Kualitas materi menurun</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td><span class="badge bg-success">Teknologi</span></td>
+                                        <td>Gangguan sistem teknologi</td>
+                                        <td>Infrastruktur IT tidak memadai</td>
+                                            <td>Pelaksanaan terhambat</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td><span class="badge bg-primary">Eksternal</span></td>
+                                        <td>Minimnya partisipasi peserta</td>
+                                        <td>Promosi tidak efektif</td>
+                                        <td>Tingkat kehadiran rendah</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Analysis Tab -->
+            <div class="tab-pane fade" id="analysis" role="tabpanel">
+                <div class="row fade-in">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Matriks Risiko</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <small class="text-muted">Legenda: Kemungkinan (Horizontal) x Dampak (Vertikal)</small>
+                                </div>
+                                <div class="risk-matrix mb-3">
+                                    <div class="risk-matrix-cell matrix-extreme" data-bs-toggle="tooltip" title="Ekstrem">25</div>
+                                    <div class="risk-matrix-cell matrix-extreme" data-bs-toggle="tooltip" title="Ekstrem">20</div>
+                                    <div class="risk-matrix-cell matrix-high" data-bs-toggle="tooltip" title="Tinggi">15</div>
+                                    <div class="risk-matrix-cell matrix-high" data-bs-toggle="tooltip" title="Tinggi">10</div>
+                                    <div class="risk-matrix-cell matrix-medium" data-bs-toggle="tooltip" title="Sedang">5</div>
+                                    <div class="risk-matrix-cell matrix-extreme" data-bs-toggle="tooltip" title="Ekstrem">24</div>
+                                    <div class="risk-matrix-cell matrix-high" data-bs-toggle="tooltip" title="Tinggi">16</div>
+                                    <div class="risk-matrix-cell matrix-high" data-bs-toggle="tooltip" title="Tinggi">12</div>
+                                    <div class="risk-matrix-cell matrix-medium" data-bs-toggle="tooltip" title="Sedang">8</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">4</div>
+                                    <div class="risk-matrix-cell matrix-high" data-bs-toggle="tooltip" title="Tinggi">18</div>
+                                    <div class="risk-matrix-cell matrix-high" data-bs-toggle="tooltip" title="Tinggi">12</div>
+                                    <div class="risk-matrix-cell matrix-medium" data-bs-toggle="tooltip" title="Sedang">9</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">6</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">3</div>
+                                    <div class="risk-matrix-cell matrix-medium" data-bs-toggle="tooltip" title="Sedang">12</div>
+                                    <div class="risk-matrix-cell matrix-medium" data-bs-toggle="tooltip" title="Sedang">8</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">6</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">4</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">2</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">6</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">4</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">3</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">2</div>
+                                    <div class="risk-matrix-cell matrix-low" data-bs-toggle="tooltip" title="Rendah">1</div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-3">
+                                        <div class="matrix-low p-2 rounded">
+                                            <small>Rendah (1-6)</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="matrix-medium p-2 rounded">
+                                            <small>Sedang (7-12)</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="matrix-high p-2 rounded">
+                                            <small>Tinggi (13-18)</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="matrix-extreme p-2 rounded">
+                                            <small>Ekstrem (19-25)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-calculator me-2"></i>Analisis Kualitatif</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="fw-bold mb-3">Skala Kemungkinan:</h6>
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>5 - Hampir Pasti (>90%)</span>
+                                        <span class="badge bg-danger">Tinggi</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>4 - Sangat Mungkin (50-90%)</span>
+                                        <span class="badge bg-warning">Sedang</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>3 - Mungkin (25-50%)</span>
+                                        <span class="badge bg-warning">Sedang</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>2 - Jarang (10-25%)</span>
+                                        <span class="badge bg-info">Rendah</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>1 - Sangat Jarang (<10%)</span>
+                                        <span class="badge bg-success">Rendah</span>
+                                    </div>
+                                </div>
+                                <h6 class="fw-bold mb-3">Skala Dampak:</h6>
+                                <div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>5 - Kritis (Dampak sangat besar)</span>
+                                        <span class="badge bg-danger">Tinggi</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>4 - Mayor (Dampak besar)</span>
+                                        <span class="badge bg-danger">Tinggi</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>3 - Moderat (Dampak sedang)</span>
+                                        <span class="badge bg-warning">Sedang</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>2 - Minor (Dampak kecil)</span>
+                                        <span class="badge bg-info">Rendah</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>1 - Insignifikan (Dampak sangat kecil)</span>
+                                        <span class="badge bg-success">Rendah</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Analysis Results -->
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>Hasil Analisis Risiko</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Risiko</th>
+                                        <th>Kemungkinan</th>
+                                        <th>Dampak</th>
+                                        <th>Skor Risiko</th>
+                                        <th>Level Risiko</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Keterlambatan pelaksanaan</td>
+                                        <td>4</td>
+                                        <td>4</td>
+                                        <td><strong>16</strong></td>
+                                        <td><span class="risk-level-high">Tinggi</span></td>
+                                        <td><i class="fas fa-exclamation-circle text-danger"></i> Perlu Tindakan</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Overbudget anggaran</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td><strong>9</strong></td>
+                                        <td><span class="risk-level-medium">Sedang</span></td>
+                                        <td><i class="fas fa-info-circle text-warning"></i> Pantau</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kurang kompetensi narasumber</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td><strong>12</strong></td>
+                                        <td><span class="risk-level-medium">Sedang</span></td>
+                                        <td><i class="fas fa-info-circle text-warning"></i> Pantau</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gangguan teknologi</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td><strong>6</strong></td>
+                                        <td><span class="risk-level-low">Rendah</span></td>
+                                        <td><i class="fas fa-check-circle text-success"></i> Diterima</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Minim partisipasi</td>
+                                        <td>4</td>
+                                        <td>3</td>
+                                        <td><strong>12</strong></td>
+                                        <td><span class="risk-level-medium">Sedang</span></td>
+                                        <td><i class="fas fa-info-circle text-warning"></i> Pantau</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Treatment Tab -->
+            <div class="tab-pane fade" id="treatment" role="tabpanel">
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-shield-alt me-2"></i>Strategi Penanganan Risiko</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center p-3 border rounded">
+                                    <i class="fas fa-ban text-danger" style="font-size: 2.5rem;"></i>
+                                    <h6 class="mt-2">Avoidance</h6>
+                                    <p class="small text-muted">Menghindari risiko</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center p-3 border rounded">
+                                    <i class="fas fa-minus-circle text-warning" style="font-size: 2.5rem;"></i>
+                                    <h6 class="mt-2">Reduction</h6>
+                                    <p class="small text-muted">Mengurangi risiko</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center p-3 border rounded">
+                                    <i class="fas fa-exchange-alt text-info" style="font-size: 2.5rem;"></i>
+                                    <h6 class="mt-2">Transfer</h6>
+                                    <p class="small text-muted">Mentransfer risiko</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center p-3 border rounded">
+                                    <i class="fas fa-check text-success" style="font-size: 2.5rem;"></i>
+                                    <h6 class="mt-2">Acceptance</h6>
+                                    <p class="small text-muted">Menerima risiko</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Treatment Plan -->
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Rencana Penanganan Risiko</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="treatmentAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#risk1">
+                                        Risiko 1: Keterlambatan Pelaksanaan (Skor: 16 - Tinggi)
+                                    </button>
+                                </h2>
+                                <div id="risk1" class="accordion-collapse collapse show" data-bs-parent="#treatmentAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6 class="fw-bold">Strategi: Reduction</h6>
+                                                <p><strong>Tindakan:</strong></p>
+                                                <ul>
+                                                    <li>Membuat jadwal pelaksanaan yang detail dengan milestone</li>
+                                                    <li>Menunjuk koordinator untuk monitoring progress</li>
+                                                    <li>Mengadakan rapat koordinasi mingguan</li>
+                                                    <li>Menyiapkan rencana cadangan untuk keterlambatan</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="fw-bold">Detail Implementasi:</h6>
+                                                <table class="table table-sm">
+                                                    <tr>
+                                                        <td><strong>Penanggung Jawab:</strong></td>
+                                                        <td>Ketua Pelaksana</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Waktu:</strong></td>
+                                                        <td>Januari 2024 - Berkelanjutan</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Biaya:</strong></td>
+                                                        <td>Rp 5.000.000</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>KPI:</strong></td>
+                                                        <td>100% kegiatan tepat waktu</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk2">
+                                        Risiko 2: Overbudget Anggaran (Skor: 9 - Sedang)
+                                    </button>
+                                </h2>
+                                <div id="risk2" class="accordion-collapse collapse" data-bs-parent="#treatmentAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6 class="fw-bold">Strategi: Reduction</h6>
+                                                <p><strong>Tindakan:</strong></p>
+                                                <ul>
+                                                    <li>Melakukan perencanaan anggaran yang detail</li>
+                                                    <li>Mengimplementasikan sistem kontrol biaya</li>
+                                                    <li>Mencari alternatif yang lebih efisien</li>
+                                                    <li>Menyediakan dana cadangan 10%</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="fw-bold">Detail Implementasi:</h6>
+                                                <table class="table table-sm">
+                                                    <tr>
+                                                        <td><strong>Penanggung Jawab:</strong></td>
+                                                        <td>Bendahara</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Waktu:</strong></td>
+                                                        <td>Februari 2024 - Berkelanjutan</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Biaya:</strong></td>
+                                                        <td>Rp 2.000.000</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>KPI:</strong></td>
+                                                        <td>Deviasi anggaran < 5%</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk3">
+                                        Risiko 3: Kurang Kompetensi Narasumber (Skor: 12 - Sedang)
+                                    </button>
+                                </h2>
+                                <div id="risk3" class="accordion-collapse collapse" data-bs-parent="#treatmentAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6 class="fw-bold">Strategi: Reduction</h6>
+                                                <p><strong>Tindakan:</strong></p>
+                                                <ul>
+                                                    <li>Membuat kriteria seleksi narasumber yang ketat</li>
+                                                    <li>Melakukan uji kompetensi sebelum penunjukan</li>
+                                                    <li>Menyediakan training untuk narasumber</li>
+                                                    <li>Menyiapkan materi backup</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="fw-bold">Detail Implementasi:</h6>
+                                                <table class="table table-sm">
+                                                    <tr>
+                                                        <td><strong>Penanggung Jawab:</strong></td>
+                                                        <td>Tim Kurikulum</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Waktu:</strong></td>
+                                                        <td>Januari - Maret 2024</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Biaya:</strong></td>
+                                                        <td>Rp 7.500.000</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>KPI:</strong></td>
+                                                        <td>100% narasumber terverifikasi</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitoring Plan -->
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Rencana Pemantauan dan Review</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="border rounded p-3">
+                                    <h6 class="fw-bold text-primary">Pemantauan Harian</h6>
+                                    <ul class="small">
+                                        <li>Checklist progress harian</li>
+                                        <li>Update status risiko</li>
+                                        <li>Komunikasi tim</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="border rounded p-3">
+                                    <h6 class="fw-bold text-warning">Review Mingguan</h6>
+                                    <ul class="small">
+                                        <li>Evaluasi kemajuan</li>
+                                        <li>Update register risiko</li>
+                                        <li>Rapat koordinasi</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="border rounded p-3">
+                                    <h6 class="fw-bold text-success">Review Bulanan</h6>
+                                    <ul class="small">
+                                        <li>Evaluasi efektivitas penanganan</li>
+                                        <li>Update matriks risiko</li>
+                                        <li>Laporan ke manajemen</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Register Tab -->
+            <div class="tab-pane fade" id="register" role="tabpanel">
+                <div class="card fade-in">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-table me-2"></i>Register Risiko</h5>
+                        <button class="btn btn-sm btn-light" onclick="exportToExcel()">
+                            <i class="fas fa-download me-2"></i>Export Excel
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="riskRegisterTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Kategori</th>
+                                        <th>Deskripsi Risiko</th>
+                                        <th>Pemicu</th>
+                                        <th>Kemungkinan</th>
+                                        <th>Dampak</th>
+                                        <th>Skor</th>
+                                        <th>Level</th>
+                                        <th>Strategi</th>
+                                        <th>Tindakan</th>
+                                        <th>PJ</th>
+                                        <th>Target</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>R001</td>
+                                        <td>Operasional</td>
+                                        <td>Keterlambatan pelaksanaan kegiatan</td>
+                                        <td>Keterlambatan persiapan logistik</td>
+                                        <td>4</td>
+                                        <td>4</td>
+                                        <td><strong>16</strong></td>
+                                        <td><span class="risk-level-high">Tinggi</span></td>
+                                        <td>Reduction</td>
+                                        <td>Jadwal detail, monitoring</td>
+                                        <td>Ketua Pelaksana</td>
+                                        <td>Q1 2024</td>
+                                        <td><span class="badge bg-warning">On Progress</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>R002</td>
+                                        <td>Keuangan</td>
+                                        <td>Overbudget dalam pelaksanaan</td>
+                                        <td>Perencanaan tidak akurat</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td><strong>9</strong></td>
+                                        <td><span class="risk-level-medium">Sedang</span></td>
+                                        <td>Reduction</td>
+                                        <td>Kontrol biaya, dana cadangan</td>
+                                        <td>Bendahara</td>
+                                        <td>Q1 2024</td>
+                                        <td><span class="badge bg-info">Planned</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>R003</td>
+                                        <td>SDM</td>
+                                        <td>Kurang kompetensi narasumber</td>
+                                        <td>Seleksi tidak ketat</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td><strong>12</strong></td>
+                                        <td><span class="risk-level-medium">Sedang</span></td>
+                                        <td>Reduction</td>
+                                        <td>Uji kompetensi, training</td>
+                                        <td>Tim Kurikulum</td>
+                                        <td>Q1 2024</td>
+                                        <td><span class="badge bg-info">Planned</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>R004</td>
+                                        <td>Teknologi</td>
+                                        <td>Gangguan sistem teknologi</td>
+                                        <td>Infrastruktur tidak memadai</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td><strong>6</strong></td>
+                                        <td><span class="risk-level-low">Rendah</span></td>
+                                        <td>Acceptance</td>
+                                        <td>Backup system</td>
+                                        <td>IT Support</td>
+                                        <td>Q2 2024</td>
+                                        <td><span class="badge bg-success">Accepted</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>R005</td>
+                                        <td>Eksternal</td>
+                                        <td>Minim partisipasi peserta</td>
+                                        <td>Promosi tidak efektif</td>
+                                        <td>4</td>
+                                        <td>3</td>
+                                        <td><strong>12</strong></td>
+                                        <td><span class="risk-level-medium">Sedang</span></td>
+                                        <td>Reduction</td>
+                                        <td>Enhance promotion</td>
+                                        <td>Tim Publikasi</td>
+                                        <td>Q1 2024</td>
+                                        <td><span class="badge bg-warning">On Progress</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Dashboard -->
+                <div class="row fade-in">
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-exclamation-triangle text-danger" style="font-size: 3rem;"></i>
+                                <h3 class="mt-3">1</h3>
+                                <p class="text-muted">Risiko Tinggi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-exclamation-circle text-warning" style="font-size: 3rem;"></i>
+                                <h3 class="mt-3">3</h3>
+                                <p class="text-muted">Risiko Sedang</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                                <h3 class="mt-3">1</h3>
+                                <p class="text-muted">Risiko Rendah</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Items -->
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-clipboard-check me-2"></i>Action Items Terkini</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Finalisasi jadwal pelaksanaan detail</h6>
+                                        <small class="text-muted">Untuk mitigasi risiko keterlambatan</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-warning">Due: 15 Jan 2024</span>
+                                        <br>
+                                        <small class="text-muted">Ketua Pelaksana</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Review anggaran detail</h6>
+                                        <small class="text-muted">Untuk mitigasi risiko overbudget</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-info">Due: 20 Jan 2024</span>
+                                        <br>
+                                        <small class="text-muted">Bendahara</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Desain kriteria seleksi narasumber</h6>
+                                        <small class="text-muted">Untuk mitigasi risiko kompetensi</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-info">Due: 25 Jan 2024</span>
+                                        <br>
+                                        <small class="text-muted">Tim Kurikulum</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="floating-action">
+        <button class="btn btn-primary-custom btn-lg rounded-circle" onclick="printDocument()">
+            <i class="fas fa-print"></i>
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+
+        // Print function
+        function printDocument() {
+            window.print();
+        }
+
+        // Export to Excel function (simulation)
+        function exportToExcel() {
+            alert('Fitur export ke Excel akan segera tersedia. Data telah disiapkan untuk diekspor.');
+        }
+
+        // Add fade-in animation on tab change
+        document.querySelectorAll('[data-bs-toggle="pill"]').forEach(button => {
+            button.addEventListener('shown.bs.tab', function (e) {
+                const targetPane = document.querySelector(e.target.getAttribute('data-bs-target'));
+                targetPane.querySelectorAll('.fade-in').forEach(element => {
+                    element.style.animation = 'none';
+                    setTimeout(() => {
+                        element.style.animation = '';
+                    }, 10);
+                });
+            });
+        });
+
+        // Simulate real-time updates
+        setInterval(() => {
+            const progressBars = document.querySelectorAll('.progress-bar-custom');
+            progressBars.forEach(bar => {
+                const currentWidth = parseInt(bar.style.width);
+                const variation = Math.floor(Math.random() * 5) - 2; // Random variation between -2 and 2
+                const newWidth = Math.max(0, Math.min(100, currentWidth + variation));
+                bar.style.width = newWidth + '%';
+            });
+        }, 5000);
+    </script>
+</body>
+</html>

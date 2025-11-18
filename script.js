@@ -67,11 +67,21 @@ const tabData = {
     tab7: {
         title: 'Tab Seven',
         accordions: [
-            'Accordion Item #1 for Tab Six',
-            'Accordion Item #2 for Tab Six',
-            'Accordion Item #3 for Tab Six',
-            'Accordion Item #4 for Tab Six',
-            'Accordion Item #5 for Tab Six'
+            'Accordion Item #1 for Tab Seven',
+            'Accordion Item #2 for Tab Seven',
+            'Accordion Item #3 for Tab Seven',
+            'Accordion Item #4 for Tab Seven',
+            'Accordion Item #5 for Tab Seven'
+        ]
+    },
+    tab8: {
+        title: 'Tab Eight',
+        accordions: [
+            'Accordion Item #1 for Tab Seven',
+            'Accordion Item #2 for Tab Seven',
+            'Accordion Item #3 for Tab Seven',
+            'Accordion Item #4 for Tab Seven',
+            'Accordion Item #5 for Tab Seven'
         ]
     }
 };
@@ -93,7 +103,7 @@ const infoContent = {
  */
 function generateAccordionItem(tabId, itemIndex, headingText, parentAccordionId) {
     const isFirstItem = itemIndex === 0;
-    const ordinals = ["first", "second", "third", "fourth", "fifth"];
+    const ordinals = ["first", "second", "third", "fourth", "fifth", "sixth"];
     const ordinal = ordinals[itemIndex] || (itemIndex + 1).toString(); // Fallback for more than 5 items
     const tabName = tabData[tabId].title;
     const collapseId = `collapse${itemIndex + 1}${tabId.charAt(0).toUpperCase() + tabId.slice(1)}`; // e.g., collapse1Tab1

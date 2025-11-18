@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumen Manajemen Risiko - ISO 31000</title>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #2874a6;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .iso-badge {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 30px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .card h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .card h4 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .risk-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        
+        .risk-matrix th, .risk-matrix td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .risk-matrix th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .risk-matrix tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .risk-level {
+            padding: 6px 12px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .high {
+            background-color: var(--danger);
+        }
+        
+        .medium {
+            background-color: var(--warning);
+        }
+        
+        .low {
+            background-color: var(--success);
+        }
+        
+        .risk-item {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .risk-item h4 {
+            margin-top: 0;
+            color: var(--dark);
+        }
+        
+        .risk-item p {
+            margin-bottom: 10px;
+        }
+        
+        .risk-treatment {
+            background-color: #eaf2f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        .risk-treatment h5 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .risk-treatment ul {
+            padding-left: 20px;
+        }
+        
+        .risk-treatment li {
+            margin-bottom: 8px;
+        }
+        
+        .timeline {
+            display: flex;
+            margin: 30px 0;
+        }
+        
+        .timeline-item {
+            flex: 1;
+            padding: 0 15px;
+            position: relative;
+        }
+        
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--light);
+            z-index: 1;
+        }
+        
+        .timeline-point {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            text-align: center;
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-content h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .action-plan {
+            background-color: #f1f8e9;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .action-plan h4 {
+            color: #558b2f;
+        }
+        
+        .action-plan ul {
+            padding-left: 20px;
+        }
+        
+        .action-plan li {
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .timeline {
+                flex-direction: column;
+            }
+            
+            .timeline-item:not(:last-child):after {
+                display: none;
+            }
+            
+            .risk-matrix {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Dokumen Manajemen Risiko</h1>
+            <p>Pelayanan dan Pengembangan Diseminasi Informasi Statistik</p>
+            <div class="iso-badge">ISO 31000:2018</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>1. Konteks Manajemen Risiko</h2>
+            <h3>1.1 Kegiatan</h3>
+            <p><strong>Nama Kegiatan:</strong> Pelayanan dan Pengembangan Diseminasi Informasi Statistik</p>
+            <p><strong>Indikator Kinerja:</strong> Tingkat kemudahan akses data</p>
+            
+            <h3>1.2 Tujuan Kegiatan</h3>
+            <ul>
+                <li>Menyediakan akses data statistik yang mudah dan cepat bagi pemangku kepentingan</li>
+                <li>Meningkatkan kepuasan pengguna layanan data statistik</li>
+                <li>Memastikan ketersediaan data yang akurat dan terkini</li>
+                <li>Mengembangkan platform diseminasi data yang inovatif</li>
+            </ul>
+            
+            <h3>1.3 Lingkungan Eksternal dan Internal</h3>
+            <h4>Faktor Eksternal:</h4>
+            <ul>
+                <li>Perkembangan teknologi informasi dan kebutuhan data real-time</li>
+                <li>Regulasi tentang keterbukaan data publik</li>
+                <li>Ekspektasi masyarakat akan layanan digital yang mudah diakses</li>
+                <li>Tantangan keamanan siber dan perlindungan data</li>
+            </ul>
+            
+            <h4>Faktor Internal:</h4>
+            <ul>
+                <li>Ketersediaan sumber daya manusia dan teknologi</li>
+                <li>Kebijakan internal tentang pengelolaan data</li>
+                <li>Kapasitas infrastruktur IT</li>
+                <li>Budaya organisasi dalam inovasi layanan</li>
+            </ul>
+            
+            <h3>1.4 Kriteria Risiko</h3>
+            <table class="risk-matrix">
+                <tr>
+                    <th>Kriteria</th>
+                    <th>Tingkat Rendah</th>
+                    <th>Tingkat Sedang</th>
+                    <th>Tingkat Tinggi</th>
+                </tr>
+                <tr>
+                    <td><strong>Dampak</strong></td>
+                    <td>Tidak signifikan terhadap kegiatan</td>
+                    <td>Mengganggu pencapaian target kinerja</td>
+                    <td>Gagal mencapai tujuan kegiatan</td>
+                </tr>
+                <tr>
+                    <td><strong>Kemungkinan</strong></td>
+                    <td>Kemungkinan kecil terjadi (&lt;10%)</td>
+                    <td>Kemungkinan sedang terjadi (10-50%)</td>
+                    <td>Kemungkinan besar terjadi (&gt;50%)</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>2. Penilaian Risiko</h2>
+            <h3>2.1 Identifikasi Risiko</h3>
+            
+            <div class="risk-item">
+                <h4>Risiko 1: Gangguan Teknis pada Platform Diseminasi Data</h4>
+                <p><strong>Kategori:</strong> Operasional/Teknis</p>
+                <p><strong>Deskripsi:</strong> Sistem down, loading lambat, atau error pada portal data statistik yang menghambat akses pengguna.</p>
+                
+                <div class="risk-treatment">
+                    <h5>Dampak Potensial:</h5>
+                    <ul>
+                        <li>Pengguna tidak dapat mengakses data</li>
+                        <li>Menurunnya kepercayaan publik</li>
+                        <li>Gagal mencapai target kemudahan akses data</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Risiko 2: Kualitas Data Tidak Memadai</h4>
+                <p><strong>Kategori:</strong> Data/Konten</p>
+                <p><strong>Deskripsi:</strong> Data yang tersedia tidak akurat, tidak terkini, atau tidak lengkap sehingga tidak memenuhi kebutuhan pengguna.</p>
+                
+                <div class="risk-treatment">
+                    <h5>Dampak Potensial:</h5>
+                    <ul>
+                        <li>Keputusan berbasis data menjadi tidak valid</li>
+                        <li>Kerusakan reputasi institusi</li>
+                        <li>Pengguna mencari sumber data lain</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Risiko 3: Keamanan Data dan Privasi Pengguna</h4>
+                <p><strong>Kategori:</strong> Keamanan</p>
+                <p><strong>Deskripsi:</strong> Kebocoran data, serangan siber, atau akses tidak sah yang membahayakan kerahasiaan data dan informasi pengguna.</p>
+                
+                <div class="risk-treatment">
+                    <h5>Dampak Potensial:</h5>
+                    <ul>
+                        <li>Pelanggaran regulasi perlindungan data</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Risiko 4: Kurangnya Adopsi oleh Pengguna</h4>
+                <p><strong>Kategori:</strong> Penerimaan Publik</p>
+                <p><strong>Deskripsi:</strong> Platform atau layanan data tidak digunakan secara optimal oleh target pengguna karena berbagai alasan.</p>
+                
+                <div class="risk-treatment">
+                    <h5>Dampak Potensial:</h5>
+                    <ul>
+                        <li>Sumber daya yang terbuang untuk pengembangan platform</li>
+                        <li>Tidak tercapainya target diseminasi data</li>
+                        <li>Kurangnya feedback untuk perbaikan layanan</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>2.2 Analisis Risiko</h3>
+            <table class="risk-matrix">
+                <tr>
+                    <th>Risiko</th>
+                    <th>Kemungkinan</th>
+                    <th>Dampak</th>
+                    <th>Tingkat Risiko</th>
+                </tr>
+                <tr>
+                    <td>Gangguan Teknis Platform</td>
+                    <td>Sedang (40%)</td>
+                    <td>Tinggi</td>
+                    <td><span class="risk-level high">Tinggi</span></td>
+                </tr>
+                <tr>
+                    <td>Kualitas Data Tidak Memadai</td>
+                    <td>Tinggi (60%)</td>
+                    <td>Tinggi</td>
+                    <td><span class="risk-level high">Tinggi</span></td>
+                </tr>
+                <tr>
+                    <td>Keamanan Data dan Privasi</td>
+                    <td>Rendah (15%)</td>
+                    <td>Tinggi</td>
+                    <td><span class="risk-level medium">Sedang</span></td>
+                </tr>
+                <tr>
+                    <td>Kurangnya Adopsi Pengguna</td>
+                    <td>Sedang (45%)</td>
+                    <td>Sedang</td>
+                    <td><span class="risk-level medium">Sedang</span></td>
+                </tr>
+            </table>
+            
+            <h3>2.3 Evaluasi Risiko</h3>
+            <p>Berdasarkan analisis di atas, risiko dengan prioritas tertinggi adalah:</p>
+            <ol>
+                <li><strong>Kualitas Data Tidak Memadai</strong> - Risiko tinggi dengan kemungkinan terjadi besar</li>
+                <li><strong>Gangguan Teknis Platform</strong> - Risiko tinggi yang dapat langsung menghambat akses data</li>
+                <li><strong>Keamanan Data dan Privasi</strong> - Risiko sedang namun dampaknya sangat signifikan</li>
+                <li><strong>Kurangnya Adopsi Pengguna</strong> - Risiko sedang yang perlu dikelola untuk keberlanjutan</li>
+            </ol>
+        </div>
+        
+        <div class="card">
+            <h2>3. Penanganan Risiko</h2>
+            <h3>3.1 Opsi Penanganan Risiko</h3>
+            
+            <div class="risk-item">
+                <h4>Risiko 1: Gangguan Teknis pada Platform Diseminasi Data</h4>
+                <div class="risk-treatment">
+                    <h5>Strategi: Mitigasi</h5>
+                    <ul>
+                        <li>Mengembangkan sistem dengan arsitektur yang tangguh dan scalable</li>
+                        <li>Implementasi load balancing dan CDN untuk meningkatkan performa</li>
+                        <li>Menyediakan sistem backup dan disaster recovery</li>
+                        <li>Monitoring 24/7 dengan alert system</li>
+                        <li>Rutin melakukan maintenance dan update sistem</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Risiko 2: Kualitas Data Tidak Memadai</h4>
+                <div class="risk-treatment">
+                    <h5>Strategi: Mitigasi dan Pencegahan</h5>
+                    <ul>
+                        <li>Membangun sistem validasi data otomatis</li>
+                        <li>Menetapkan standar kualitas data yang jelas</li>
+                        <li>Proses review data oleh tim ahli sebelum publikasi</li>
+                        <li>Update data secara berkala sesuai jadwal yang ditetapkan</li>
+                        <li>Mekanisme feedback dari pengguna untuk koreksi data</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Risiko 3: Keamanan Data dan Privasi Pengguna</h4>
+                <div class="risk-treatment">
+                    <h5>Strategi: Mitigasi dan Transfer</h5>
+                    <ul>
+                        <li>Implementasi enkripsi data end-to-end</li>
+                        <li>Regular security audit dan penetration testing</li>
+                        <li>Kebijakan akses berbasis peran (role-based access)</li>
+                        <li>Pelatihan kesadaran keamanan bagi tim IT</li>
+                        <li>Asuransi siber untuk transfer risiko finansial</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Risiko 4: Kurangnya Adopsi oleh Pengguna</h4>
+                <div class="risk-treatment">
+                    <h5>Strategi: Mitigasi dan Penerimaan</h5>
+                    <ul>
+                        <li>User-centered design dalam pengembangan platform</li>
+                        <li>Uji coba dengan pengguna sebelum peluncuran</li>
+                        <li>Sosialisasi dan pelatihan penggunaan platform</li>
+                        <li>Integrasi dengan platform lain yang sudah populer</li>
+                        <li>Mekanisme reward untuk pengguna aktif</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>3.2 Rencana Aksi</h3>
+            <div class="action-plan">
+                <h4>Rencana Aksi Penanganan Risiko</h4>
+                <ul>
+                    <li><strong>Q1 2024:</strong> Penyusunan standar kualitas data dan protokol keamanan</li>
+                    <li><strong>Q2 2024:</strong> Pengembangan platform dengan fitur validasi otomatis dan sistem keamanan berlapis</li>
+                    <li><strong>Q3 2024:</strong> Uji coba platform dengan pengguna terbatas dan pelatihan tim</li>
+                    <li><strong>Q4 2024:</strong> Peluncuran platform dengan sistem monitoring 24/7</li>
+                    <li><strong>Q1 2025:</strong> Evaluasi pertama dan perbaikan berdasarkan feedback</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>4. Pemantauan dan Tinjauan</h2>
+            <h3>4.1 Indikator Pemantauan Risiko</h3>
+            <table class="risk-matrix">
+                <tr>
+                    <th>Risiko</th>
+                    <th>Indikator Pemantauan</th>
+                    <th>Frekuensi</th>
+                </tr>
+                <tr>
+                    <td>Gangguan Teknis Platform</td>
+                    <td>Uptime sistem (target: 99.5%), waktu respons server</td>
+                    <td>Real-time</td>
+                </tr>
+                <tr>
+                    <td>Kualitas Data Tidak Memadai</td>
+                    <td>Jumlah laporan error data, tingkat akurasi data (target: 98%)</td>
+                    <td>Bulanan</td>
+                </tr>
+                <tr>
+                    <td>Keamanan Data dan Privasi</td>
+                    <td>Jumlah upaya serangan yang berhasil, hasil audit keamanan</td>
+                    <td>Kuartalan</td>
+                </tr>
+                <tr>
+                    <td>Kurangnya Adopsi Pengguna</td>
+                    <td>Jumlah pengguna aktif, tingkat retensi, skor kepuasan pengguna</td>
+                    <td>Bulanan</td>
+                </tr>
+            </table>
+            
+            <h3>4.2 Mekanisme Tinjauan</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-point">1</div>
+                    <div class="timeline-content">
+                        <h4>Tinjauan Mingguan</h4>
+                        <p>Monitoring teknis platform dan respons insiden</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-point">2</div>
+                    <div class="timeline-content">
+                        <h4>Tinjauan Bulanan</h4>
+                        <p>Evaluasi kualitas data dan adopsi pengguna</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-point">3</div>
+                    <div class="timeline-content">
+                        <h4>Tinjauan Kuartalan</h4>
+                        <p>Audit keamanan dan evaluasi kinerja risiko</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-point">4</div>
+                    <div class="timeline-content">
+                        <h4>Tinjauan Tahunan</h4>
+                        <p>Penyegaran dokumen manajemen risiko</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>5. Komunikasi dan Konsultasi</h2>
+            <h3>5.1 Pemangku Kepentingan</h3>
+            <table class="risk-matrix">
+                <tr>
+                    <th>Pemangku Kepentingan</th>
+                    <th>Peran</th>
+                    <th>Kebutuhan Informasi</th>
+                </tr>
+                <tr>
+                    <td>Tim Manajemen</td>
+                    <td>Pengambil keputusan</td>
+                    <td>Laporan status risiko, rekomendasi tindakan</td>
+                </tr>
+                <tr>
+                    <td>Tim Teknis/IT</td>
+                    <td>Implementasi mitigasi</td>
+                    <td>Detail risiko teknis, prosedur penanganan</td>
+                </tr>
+                <tr>
+                    <td>Tim Produksi Data</td>
+                    <td>Penyedia data</td>
+                    <li>Standar kualitas data, jadwal update</td>
+                </tr>
+                <tr>
+                    <td>Pengguna Layanan</td>
+                    <td>Penerima layanan</td>
+                    <td>Informasi gangguan, cara melaporkan masalah</td>
+                </tr>
+                <tr>
+                    <td>Regulator</td>
+                    <td>Pengawas</td>
+                    <td>Kepatuhan regulasi, laporan insiden</td>
+                </tr>
+            </table>
+            
+            <h3>5.2 Strategi Komunikasi</h3>
+            <div class="risk-item">
+                <h4>Komunikasi Internal</h4>
+                <ul>
+                    <li>Rapat koordinasi risiko bulanan antar unit</li>
+                    <li>Dashboard monitoring risiko yang dapat diakses semua tim terkait</li>
+                    <li>Sistem pelaporan insiden terstruktur</li>
+                    <li>Pelatihan berkala tentang manajemen risiko</li>
+                </ul>
+            </div>
+            
+            <div class="risk-item">
+                <h4>Komunikasi Eksternal</h4>
+                <ul>
+                    <li>Notifikasi otomatis kepada pengguna saat terjadi gangguan</li>
+                    <li>Laporan transparansi tentang kualitas data dan keamanan</li>
+                    <li>Forum konsultasi publik untuk masukan layanan</li>
+                    <li>Sosialisasi kebijakan privasi dan keamanan data</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Dokumen Manajemen Risiko - Pelayanan dan Pengembangan Diseminasi Informasi Statistik</p>
+            <p>Dokumen ini disusun berdasarkan standar ISO 31000:2018</p>
+        </div>
+    </footer>
+</body>
+</html>

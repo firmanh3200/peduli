@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumen Manajemen Risiko - Penataan Tatalaksana WBK/WBBM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --light: #f0f9ff;
+            --dark: #1e293b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            border-radius: 12px 12px 0 0 !important;
+            padding: 1rem 1.5rem;
+        }
+        
+        .risk-table {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .risk-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            padding: 0.75rem;
+        }
+        
+        .risk-table td {
+            padding: 0.75rem;
+            vertical-align: middle;
+        }
+        
+        .risk-level {
+            font-weight: 700;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            text-align: center;
+            display: inline-block;
+            min-width: 120px;
+        }
+        
+        .risk-high {
+            background-color: #fee2e2;
+            color: var(--danger);
+        }
+        
+        .risk-medium {
+            background-color: #fef3c7;
+            color: var(--warning);
+        }
+        
+        .risk-low {
+            background-color: #d1fae5;
+            color: var(--success);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.25rem;
+            top: 0.5rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--secondary);
+        }
+        
+        .nav-pills .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+            border-radius: 8px;
+            margin: 0 0.25rem;
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: var(--secondary);
+        }
+        
+        .approval-box {
+            background-color: var(--light);
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 5px solid var(--accent);
+        }
+        
+        .risk-matrix {
+            display: grid;
+            grid-template-columns: 80px repeat(5, 1fr);
+            grid-template-rows: 40px repeat(5, 1fr);
+            gap: 2px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .matrix-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            border-radius: 4px;
+            color: white;
+        }
+        
+        .matrix-header {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .matrix-label {
+            background-color: #e5e7eb;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 0;
+            }
+            
+            .risk-table {
+                font-size: 0.9rem;
+            }
+            
+            .risk-level {
+                min-width: 100px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content text-center">
+                <div class="mb-4">
+                    <i class="bi bi-shield-check" style="font-size: 4rem;"></i>
+                </div>
+                <h1 class="display-4 fw-bold mb-3">Dokumen Manajemen Risiko</h1>
+                <h2 class="h3 mb-4">Penataan Tatalaksana Menuju WBK/WBBM</h2>
+                <p class="lead mb-0">Berdasarkan ISO 31000:2018</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="container my-5">
+        <ul class="nav nav-pills justify-content-center mb-4" id="riskTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="intro-tab" data-bs-toggle="tab" data-bs-target="#intro" type="button" role="tab" aria-controls="intro" aria-selected="true">Pendahuluan</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="framework-tab" data-bs-toggle="tab" data-bs-target="#framework" type="button" role="tab" aria-controls="framework" aria-selected="false">Kerangka Kerja</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="process-tab" data-bs-toggle="tab" data-bs-target="#process" type="button" role="tab" aria-controls="process" aria-selected="false">Proses Risiko</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Register Risiko</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="approval-tab" data-bs-toggle="tab" data-bs-target="#approval" type="button" role="tab" aria-controls="approval" aria-selected="false">Persetujuan</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="riskTabsContent">
+            <!-- Pendahuluan Tab -->
+            <div class="tab-pane fade show active" id="intro" role="tabpanel" aria-labelledby="intro-tab">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h3 class="h5 mb-0"><i class="bi bi-info-circle me-2"></i>Pendahuluan</h3>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="section-title">Latar Belakang</h4>
+                                <p>Penataan tatalaksana bertujuan meningkatkan efisiensi dan efektivitas sistem, proses, dan prosedur kerja pada Zona Integritas menuju Wilayah Bebas dari Korupsi (WBK) dan Wilayah Birokrasi Bersih dan Melayani (WBBM). Target utama program ini adalah:</p>
+                                
+                                <div class="row mt-4">
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <div class="card-body text-center">
+                                                <div class="mb-3 text-primary">
+                                                    <i class="bi bi-cpu" style="font-size: 2.5rem;"></i>
+                                                </div>
+                                                <h5>Target 1</h5>
+                                                <p class="mb-0">Meningkatnya penggunaan teknologi informasi dalam manajemen pemerintahan</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <div class="card-body text-center">
+                                                <div class="mb-3 text-primary">
+                                                    <i class="bi bi-gear" style="font-size: 2.5rem;"></i>
+                                                </div>
+                                                <h5>Target 2</h5>
+                                                <p class="mb-0">Meningkatnya efisiensi dan efektivitas proses manajemen pemerintahan</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <div class="card-body text-center">
+                                                <div class="mb-3 text-primary">
+                                                    <i class="bi bi-graph-up" style="font-size: 2.5rem;"></i>
+                                                </div>
+                                                <h5>Target 3</h5>
+                                                <p class="mb-0">Meningkatnya kinerja unit kerja/satuan kerja</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4 class="section-title mt-5">Tujuan Dokumen</h4>
+                                <p>Menyediakan kerangka kerja manajemen risiko yang sistematis untuk mengidentifikasi, menilai, dan mengendalikan risiko terkait penataan tatalaksana, agar target WBK/WBBM tercapai.</p>
+                                
+                                <h4 class="section-title mt-4">Ruang Lingkup</h4>
+                                <p>Mencakup seluruh kegiatan penataan tatalaksana, termasuk:</p>
+                                <ul>
+                                    <li>Implementasi teknologi informasi</li>
+                                    <li>Perbaikan proses bisnis</li>
+                                    <li>Peningkatan kinerja unit kerja</li>
+                                </ul>
+                                
+                                <h4 class="section-title mt-4">Konteks</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5 class="text-primary">Eksternal</h5>
+                                        <ul>
+                                            <li>Kebijakan pemerintah</li>
+                                            <li>Perubahan teknologi</li>
+                                            <li>Ekspektasi masyarakat</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5 class="text-primary">Internal</h5>
+                                        <ul>
+                                            <li>Struktur organisasi</li>
+                                            <li>Sumber daya (SDM, anggaran, infrastruktur)</li>
+                                            <li>Budaya kerja</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kerangka Kerja Tab -->
+            <div class="tab-pane fade" id="framework" role="tabpanel" aria-labelledby="framework-tab">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h3 class="h5 mb-0"><i class="bi bi-diagram-3 me-2"></i>Kerangka Kerja Manajemen Risiko</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <div class="card-body">
+                                                <h4 class="section-title">Kepemimpinan dan Komitmen</h4>
+                                                <div class="timeline">
+                                                    <div class="timeline-item">
+                                                        <h5>Tanggung Jawab</h5>
+                                                        <p>Pimpinan unit kerja memastikan integrasi manajemen risiko dalam perencanaan dan operasional.</p>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <h5>Komitmen</h5>
+                                                        <p>Penyediaan sumber daya, sosialisasi kebijakan, dan pemantauan berkala.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <div class="card-body">
+                                                <h4 class="section-title">Integrasi</h4>
+                                                <p>Manajemen risiko diintegrasikan ke dalam:</p>
+                                                <ul>
+                                                    <li>Perencanaan strategis program</li>
+                                                    <li>Proses pengambilan keputusan</li>
+                                                    <li>Evaluasi kinerja</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <div class="card-body">
+                                                <h4 class="section-title">Desain Kerangka Kerja</h4>
+                                                <div class="mb-3">
+                                                    <h5>Kebijakan</h5>
+                                                    <p>Dokumen kebijakan manajemen risiko disahkan oleh pimpinan.</p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <h5>Peran dan Tanggung Jawab</h5>
+                                                    <ul>
+                                                        <li><strong>Tim Manajemen Risiko:</strong> Koordinasi identifikasi dan mitigasi risiko</li>
+                                                        <li><strong>Unit Kerja:</strong> Implementasi tindakan mitigasi</li>
+                                                    </ul>
+                                                </div>
+                                                <div>
+                                                    <h5>Prosedur</h5>
+                                                    <p>Panduan pelaksanaan manajemen risiko.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <div class="card-body">
+                                                <h4 class="section-title">Evaluasi dan Peningkatan</h4>
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <div class="me-3 text-primary">
+                                                        <i class="bi bi-calendar-check" style="font-size: 2rem;"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="mb-0">Audit Internal</h5>
+                                                        <p>Dilakukan setiap 6 bulan</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="me-3 text-primary">
+                                                        <i class="bi bi-arrow-repeat" style="font-size: 2rem;"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="mb-0">Pembaruan Dokumen</h5>
+                                                        <p>Berdasarkan hasil evaluasi</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proses Risiko Tab -->
+            <div class="tab-pane fade" id="process" role="tabpanel" aria-labelledby="process-tab">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h3 class="h5 mb-0"><i class="bi bi-activity me-2"></i>Proses Manajemen Risiko</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <h4 class="section-title">Komunikasi dan Konsultasi</h4>
+                                        <div class="card border-0 shadow-sm">
+                                            <div class="card-body">
+                                                <h5>Stakeholder</h5>
+                                                <ul>
+                                                    <li>Pimpinan</li>
+                                                    <li>Pegawai</li>
+                                                    <li>Mitra teknologi</li>
+                                                    <li>Masyarakat</li>
+                                                </ul>
+                                                <h5>Mekanisme</h5>
+                                                <ul>
+                                                    <li>Rapat koordinasi</li>
+                                                    <li>Surat elektronik</li>
+                                                    <li>Portal feedback</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="section-title">Penetapan Konteks</h4>
+                                        <div class="card border-0 shadow-sm">
+                                            <div class="card-body">
+                                                <h5>Tujuan Program</h5>
+                                                <ul>
+                                                    <li><strong>Target 1:</strong> Adopsi TI pada 100% proses bisnis kritis</li>
+                                                    <li><strong>Target 2:</strong> Pengurangan waktu proses bisnis sebesar 30%</li>
+                                                    <li><strong>Target 3:</strong> Peningkatan indeks kinerja unit kerja ≥ 85</li>
+                                                </ul>
+                                                <h5>Kriteria Risiko</h5>
+                                                <table class="table table-sm">
+                                                    <tr>
+                                                        <th>Kriteria</th>
+                                                        <th>Skala</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kemungkinan</td>
+                                                        <td>1 (Sangat Rendah) – 5 (Sangat Tinggi)</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dampak</td>
+                                                        <td>1 (Tidak Signifikan) – 5 (Kritis)</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4 class="section-title mt-5">Matriks Risiko</h4>
+                                <div class="card border-0 shadow-sm mb-4">
+                                    <div class="card-body">
+                                        <div class="risk-matrix">
+                                            <div class="matrix-header"></div>
+                                            <div class="matrix-header">1</div>
+                                            <div class="matrix-header">2</div>
+                                            <div class="matrix-header">3</div>
+                                            <div class="matrix-header">4</div>
+                                            <div class="matrix-header">5</div>
+                                            
+                                            <div class="matrix-label">5</div>
+                                            <div class="matrix-cell" style="background-color: #f59e0b;">5</div>
+                                            <div class="matrix-cell" style="background-color: #ef4444;">10</div>
+                                            <div class="matrix-cell" style="background-color: #ef4444;">15</div>
+                                            <div class="matrix-cell" style="background-color: #b91c1c;">20</div>
+                                            <div class="matrix-cell" style="background-color: #b91c1c;">25</div>
+                                            
+                                            <div class="matrix-label">4</div>
+                                            <div class="matrix-cell" style="background-color: #10b981;">4</div>
+                                            <div class="matrix-cell" style="background-color: #f59e0b;">8</div>
+                                            <div class="matrix-cell" style="background-color: #ef4444;">12</div>
+                                            <div class="matrix-cell" style="background-color: #ef4444;">16</div>
+                                            <div class="matrix-cell" style="background-color: #b91c1c;">20</div>
+                                            
+                                            <div class="matrix-label">3</div>
+                                            <div class="matrix-cell" style="background-color: #10b981;">3</div>
+                                            <div class="matrix-cell" style="background-color: #10b981;">6</div>
+                                            <div class="matrix-cell" style="background-color: #f59e0b;">9</div>
+                                            <div class="matrix-cell" style="background-color: #ef4444;">12</div>
+                                            <div class="matrix-cell" style="background-color: #ef4444;">15</div>
+                                            
+                                            <div class="matrix-label">2</div>
+                                            <div class="matrix-cell" style="background-color: #10b981;">2</div>
+                                            <div class="matrix-cell" style="background-color: #10b981;">4</div>
+                                            <div class="matrix-cell" style="background-color: #10b981;">6</div>
+                                            <div class="matrix-cell" style="background-color: #f59e0b;">8</div>
+                                            <div class="matrix-cell" style="background-color: #ef4444;">10</div>
+                                            
+                                            <div class="matrix-label">1</div>
+                                            <div class="matrix-cell" style="background-color: #10b981;">1</div>
+                                            <div class="matrix-cell" style="background-color: #10b981;">2</div>
+                                            <div class="matrix-cell" style="background-color: #10b981;">3</div>
+                                            <div class="matrix-cell" style="background-color: #10b981;">4</div>
+                                            <div class="matrix-cell" style="background-color: #f59e0b;">5</div>
+                                        </div>
+                                        <div class="text-center mt-3">
+                                            <small class="text-muted">Tingkat Risiko = Kemungkinan × Dampak</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4 class="section-title">Penilaian Risiko</h4>
+                                <div class="table-responsive">
+                                    <table class="table risk-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Kode</th>
+                                                <th>Risiko</th>
+                                                <th>Kategori</th>
+                                                <th>Dampak pada Target</th>
+                                                <th>Kemungkinan</th>
+                                                <th>Dampak</th>
+                                                <th>Tingkat Risiko</th>
+                                                <th>Kategori</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>R1.1</strong></td>
+                                                <td>Keterbatasan anggaran untuk pengadaan TI</td>
+                                                <td>Keuangan</td>
+                                                <td>Target 1 terhambat</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>20</td>
+                                                <td><span class="risk-level risk-high">Sangat Tinggi</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R1.2</strong></td>
+                                                <td>Resistensi pegawai terhadap perubahan</td>
+                                                <td>SDM</td>
+                                                <td>Target 1 & 2 gagal</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>12</td>
+                                                <td><span class="risk-level risk-high">Tinggi</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R1.3</strong></td>
+                                                <td>Kebocoran data akibat sistem TI lemah</td>
+                                                <td>Teknologi</td>
+                                                <td>Target 1 terancam</td>
+                                                <td>2</td>
+                                                <td>5</td>
+                                                <td>10</td>
+                                                <td><span class="risk-level risk-high">Tinggi</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R2.1</strong></td>
+                                                <td>Proses bisnis tidak terdokumentasi</td>
+                                                <td>Operasional</td>
+                                                <td>Target 2 tidak tercapai</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                                <td>16</td>
+                                                <td><span class="risk-level risk-high">Sangat Tinggi</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R2.2</strong></td>
+                                                <td>Koordinasi antar-unit tidak efektif</td>
+                                                <td>Organisasi</td>
+                                                <td>Target 2 & 3 menurun</td>
+                                                <td>3</td>
+                                                <td>3</td>
+                                                <td>9</td>
+                                                <td><span class="risk-level risk-medium">Sedang</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R3.1</strong></td>
+                                                <td>Indikator kinerja tidak terukur</td>
+                                                <td>Manajemen</td>
+                                                <td>Target 3 tidak terpantau</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>12</td>
+                                                <td><span class="risk-level risk-high">Tinggi</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R3.2</strong></td>
+                                                <td>Keterbatasan kompetensi SDM</td>
+                                                <td>SDM</td>
+                                                <td>Target 3 gagal</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                                <td>16</td>
+                                                <td><span class="risk-level risk-high">Sangat Tinggi</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4 class="section-title mt-5">Penanganan Risiko</h4>
+                                <div class="table-responsive">
+                                    <table class="table risk-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Kode</th>
+                                                <th>Strategi</th>
+                                                <th>Tindakan Mitigasi</th>
+                                                <th>Penanggung Jawab</th>
+                                                <th>Jangka Waktu</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>R1.1</strong></td>
+                                                <td>Mitigasi</td>
+                                                <td>
+                                                    <ul class="mb-0">
+                                                        <li>Alokasi anggaran TI dalam RKA-K/L</li>
+                                                        <li>Kerjasama dengan penyedia TI untuk pembayaran cicilan</li>
+                                                    </ul>
+                                                </td>
+                                                <td>Kepala Bagian Keuangan</td>
+                                                <td>3 bulan</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R1.2</strong></td>
+                                                <td>Mitigasi</td>
+                                                <td>
+                                                    <ul class="mb-0">
+                                                        <li>Sosialisasi manfaat TI</li>
+                                                        <li>Pelatihan bertahap dan pendampingan</li>
+                                                    </ul>
+                                                </td>
+                                                <td>Kepala Bagian SDM</td>
+                                                <td>6 bulan</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R1.3</strong></td>
+                                                <td>Mitigasi</td>
+                                                <td>
+                                                    <ul class="mb-0">
+                                                        <li>Penerapan enkripsi data</li>
+                                                        <li>Audit keamanan sistem berkala</li>
+                                                    </ul>
+                                                </td>
+                                                <td>Tim IT</td>
+                                                <td>2 bulan</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R2.1</strong></td>
+                                                <td>Eliminasi</td>
+                                                <td>
+                                                    <ul class="mb-0">
+                                                        <li>Dokumentasi ulang semua proses bisnis dengan SOP terstandar</li>
+                                                    </ul>
+                                                </td>
+                                                <td>Ketua Tim Penataan Tatalaksana</td>
+                                                <td>4 bulan</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R2.2</strong></td>
+                                                <td>Optimasi</td>
+                                                <td>
+                                                    <ul class="mb-0">
+                                                        <li>Pembentukan tim lintas-unit untuk koordinasi</li>
+                                                        <li>Aplikasi sistem monitoring terintegrasi</li>
+                                                    </ul>
+                                                </td>
+                                                <td>Sekretaris Unit</td>
+                                                <td>3 bulan</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R3.1</strong></td>
+                                                <td>Modifikasi</td>
+                                                <td>
+                                                    <ul class="mb-0">
+                                                        <li>Penyusunan KPI berbasis SMART</li>
+                                                        <li>Integrasi KPI ke sistem e-performance</li>
+                                                    </ul>
+                                                </td>
+                                                <td>Kepala Bagian Perencanaan</td>
+                                                <td>5 bulan</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R3.2</strong></td>
+                                                <td>Mitigasi</td>
+                                                <td>
+                                                    <ul class="mb-0">
+                                                        <li>Pelatihan kompetensi teknis dan manajerial</li>
+                                                        <li>Rekrutmen tenaga ahli</li>
+                                                    </ul>
+                                                </td>
+                                                <td>Kepala Bagian SDM</td>
+                                                <td>6 bulan</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4 class="section-title mt-5">Pemantauan dan Tinjauan</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card border-0 shadow-sm h-100">
+                                            <div class="card-body">
+                                                <h5>Frekuensi</h5>
+                                                <p>Evaluasi triwulanan oleh Tim Manajemen Risiko</p>
+                                                
+                                                <h5>Indikator Pemantauan</h5>
+                                                <ul>
+                                                    <li>Persentase realisasi anggaran TI</li>
+                                                    <li>Jumlah proses bisnis yang terdokumentasi</li>
+                                                    <li>Pencapaian KPI unit kerja</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card border-0 shadow-sm h-100">
+                                            <div class="card-body">
+                                                <h5>Mekanisme</h5>
+                                                <ul>
+                                                    <li>Laporan mitigasi risiko</li>
+                                                    <li>Audit internal</li>
+                                                    <li>Survei kepuasan pegawai</li>
+                                                </ul>
+                                                
+                                                <h5>Pencatatan dan Pelaporan</h5>
+                                                <ul>
+                                                    <li>Register Risiko diperbarui setiap terjadi perubahan</li>
+                                                    <li>Laporan bulanan kepada pimpinan</li>
+                                                    <li>Laporan triwulanan ke inspektorat</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Register Risiko Tab -->
+            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h3 class="h5 mb-0"><i class="bi bi-clipboard-data me-2"></i>Register Risiko</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-info">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    <strong>Catatan:</strong> Register Risiko diperbarui setiap terjadi perubahan risiko atau tindakan mitigasi.
+                                </div>
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-hover risk-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Kode</th>
+                                                <th>Risiko</th>
+                                                <th>Kategori</th>
+                                                <th>Probabilitas</th>
+                                                <th>Dampak</th>
+                                                <th>Tingkat Risiko</th>
+                                                <th>Status</th>
+                                                <th>Tindakan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>R1.1</strong></td>
+                                                <td>Keterbatasan anggaran untuk pengadaan TI</td>
+                                                <td>Keuangan</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td><span class="risk-level risk-high">20</span></td>
+                                                <td><span class="badge bg-warning text-dark">Dalam Proses</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailR1_1">
+                                                        <i class="bi bi-eye"></i> Detail
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R1.2</strong></td>
+                                                <td>Resistensi pegawai terhadap perubahan</td>
+                                                <td>SDM</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td><span class="risk-level risk-high">12</span></td>
+                                                <td><span class="badge bg-primary">Aktif</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailR1_2">
+                                                        <i class="bi bi-eye"></i> Detail
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R1.3</strong></td>
+                                                <td>Kebocoran data akibat sistem TI lemah</td>
+                                                <td>Teknologi</td>
+                                                <td>2</td>
+                                                <td>5</td>
+                                                <td><span class="risk-level risk-high">10</span></td>
+                                                <td><span class="badge bg-success">Teratasi</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailR1_3">
+                                                        <i class="bi bi-eye"></i> Detail
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R2.1</strong></td>
+                                                <td>Proses bisnis tidak terdokumentasi</td>
+                                                <td>Operasional</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                                <td><span class="risk-level risk-high">16</span></td>
+                                                <td><span class="badge bg-warning text-dark">Dalam Proses</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailR2_1">
+                                                        <i class="bi bi-eye"></i> Detail
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R2.2</strong></td>
+                                                <td>Koordinasi antar-unit tidak efektif</td>
+                                                <td>Organisasi</td>
+                                                <td>3</td>
+                                                <td>3</td>
+                                                <td><span class="risk-level risk-medium">9</span></td>
+                                                <td><span class="badge bg-primary">Aktif</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailR2_2">
+                                                        <i class="bi bi-eye"></i> Detail
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R3.1</strong></td>
+                                                <td>Indikator kinerja tidak terukur</td>
+                                                <td>Manajemen</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td><span class="risk-level risk-high">12</span></td>
+                                                <td><span class="badge bg-primary">Aktif</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailR3_1">
+                                                        <i class="bi bi-eye"></i> Detail
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>R3.2</strong></td>
+                                                <td>Keterbatasan kompetensi SDM</td>
+                                                <td>SDM</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                                <td><span class="risk-level risk-high">16</span></td>
+                                                <td><span class="badge bg-warning text-dark">Dalam Proses</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailR3_2">
+                                                        <i class="bi bi-eye"></i> Detail
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-primary">
+                                        <i class="bi bi-download me-2"></i>Unduh Register Risiko (Excel)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Persetujuan Tab -->
+            <div class="tab-pane fade" id="approval" role="tabpanel" aria-labelledby="approval-tab">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h3 class="h5 mb-0"><i class="bi bi-file-earmark-check me-2"></i>Persetujuan Dokumen</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="approval-box">
+                                    <h4 class="text-center mb-4">Pernyataan Persetujuan</h4>
+                                    <p class="text-center">Dokumen ini disahkan oleh pimpinan unit kerja dan menjadi rujukan utama dalam pelaksanaan penataan tatalaksana. Pembaruan dilakukan setiap tahun atau sesuai kebutuhan.</p>
+                                    
+                                    <div class="row mt-5">
+                                        <div class="col-md-6 text-center">
+                                            <div class="mb-3">
+                                                <div class="border-bottom border-2 border-dark d-inline-block" style="width: 200px; height: 40px;"></div>
+                                            </div>
+                                            <p class="fw-bold">Mengetahui,</p>
+                                            <p class="fw-bold">Kepala Unit Kerja</p>
+                                            <div class="mt-4">
+                                                <div class="border-bottom border-2 border-dark d-inline-block" style="width: 200px; height: 40px;"></div>
+                                            </div>
+                                            <p class="mt-2">(Nama & Jabatan)</p>
+                                        </div>
+                                        <div class="col-md-6 text-center">
+                                            <div class="mb-3">
+                                                <div class="border-bottom border-2 border-dark d-inline-block" style="width: 200px; height: 40px;"></div>
+                                            </div>
+                                            <p class="fw-bold">Disetujui,</p>
+                                            <p class="fw-bold">Pembina WBK/WBBM</p>
+                                            <div class="mt-4">
+                                                <div class="border-bottom border-2 border-dark d-inline-block" style="width: 200px; height: 40px;"></div>
+                                            </div>
+                                            <p class="mt-2">(Nama & Jabatan)</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-center mt-5">
+                                        <p class="mb-1">Tanggal: <span class="fw-bold">DD/MM/YYYY</span></p>
+                                        <p class="mb-0">Tempat: <span class="fw-bold">[Lokasi]</span></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-light mt-4">
+                                    <h5 class="alert-heading"><i class="bi bi-info-circle me-2"></i>Catatan Penting</h5>
+                                    <ul class="mb-0">
+                                        <li>Dokumen ini disusun mengacu pada ISO 31000:2018 dan disesuaikan dengan kebijakan Zona Integritas</li>
+                                        <li>Implementasi risiko diintegrasikan dengan sistem manajemen mutu (ISO 9001) dan sistem pengendalian internal (SPI)</li>
+                                        <li>Dokumen ini bersifat dinamis dan akan diperbarui sesuai dengan perkembangan organisasi</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for Risk Details -->
+    <div class="modal fade" id="detailR1_1" tabindex="-1" aria-labelledby="detailR1_1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="detailR1_1Label">Detail Risiko R1.1</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6><strong>Kode:</strong> R1.1</h6>
+                    <h6><strong>Risiko:</strong> Keterbatasan anggaran untuk pengadaan TI</h6>
+                    <h6><strong>Kategori:</strong> Keuangan</h6>
+                    <h6><strong>Dampak pada Target:</strong> Target 1 terhambat</h6>
+                    <h6><strong>Probabilitas:</strong> 4</h6>
+                    <h6><strong>Dampak:</strong> 5</h6>
+                    <h6><strong>Tingkat Risiko:</strong> <span class="risk-level risk-high">20 (Sangat Tinggi)</span></h6>
+                    
+                    <hr>
+                    
+                    <h6><strong>Strategi Penanganan:</strong> Mitigasi</h6>
+                    <h6><strong>Tindakan Mitigasi:</strong></h6>
+                    <ul>
+                        <li>Alokasi anggaran TI dalam RKA-K/L</li>
+                        <li>Kerjasama dengan penyedia TI untuk pembayaran cicilan</li>
+                    </ul>
+                    
+                    <h6><strong>Penanggung Jawab:</strong> Kepala Bagian Keuangan</h6>
+                    <h6><strong>Jangka Waktu:</strong> 3 bulan</h6>
+                    <h6><strong>Status:</strong> Dalam Proses</h6>
+                    
+                    <hr>
+                    
+                    <h6><strong>Progress:</strong></h6>
+                    <div class="progress mb-3" style="height: 20px;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                    </div>
+                    
+                    <h6><strong>Catatan:</strong></h6>
+                    <p>Proses pengajuan anggaran sedang dalam tahap verifikasi oleh Bagian Keuangan. Estimasi selesai minggu depan.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Additional modals for other risks would follow the same structure -->
+    <div class="modal fade" id="detailR1_2" tabindex="-1" aria-labelledby="detailR1_2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="detailR1_2Label">Detail Risiko R1.2</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6><strong>Kode:</strong> R1.2</h6>
+                    <h6><strong>Risiko:</strong> Resistensi pegawai terhadap perubahan</h6>
+                    <h6><strong>Kategori:</strong> SDM</h6>
+                    <h6><strong>Dampak pada Target:</strong> Target 1 & 2 gagal</h6>
+                    <h6><strong>Probabilitas:</strong> 3</h6>
+                    <h6><strong>Dampak:</strong> 4</h6>
+                    <h6><strong>Tingkat Risiko:</strong> <span class="risk-level risk-high">12 (Tinggi)</span></h6>
+                    
+                    <hr>
+                    
+                    <h6><strong>Strategi Penanganan:</strong> Mitigasi</h6>
+                    <h6><strong>Tindakan Mitigasi:</strong></h6>
+                    <ul>
+                        <li>Sosialisasi manfaat TI</li>
+                        <li>Pelatihan bertahap dan pendampingan</li>
+                    </ul>
+                    
+                    <h6><strong>Penanggung Jawab:</strong> Kepala Bagian SDM</h6>
+                    <h6><strong>Jangka Waktu:</strong> 6 bulan</h6>
+                    <h6><strong>Status:</strong> Aktif</h6>
+                    
+                    <hr>
+                    
+                    <h6><strong>Progress:</strong></h6>
+                    <div class="progress mb-3" style="height: 20px;">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                    </div>
+                    
+                    <h6><strong>Catatan:</strong></h6>
+                    <p>Tim sosialisasi telah dibentuk. Jadwal pelatihan sedang disusun dan akan dimulai bulan depan.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Dokumen Manajemen Risiko</h5>
+                    <p class="mb-0">Penataan Tatalaksana Menuju WBK/WBBM</p>
+                    <p class="mb-0">Berdasarkan ISO 31000:2018</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2023 Zona Integritas. Hak Cipta Dilindungi.</p>
+                    <p class="mb-0">Dikembangkan oleh Tim Manajemen Risiko</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add animation to cards
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
