@@ -150,7 +150,7 @@ body.dark-theme {
 
 /* Light Theme (explicitly setting defaults for clarity, though it's the :root default) */
 body.light-theme {
-    --bs-body-bg: #f8f9fa;
+    --bs-body-bg: #d9ffb2;
     --bs-body-color: #212529;
     --bs-border-color: #dee2e6;
     --bs-body-color-rgb: 33,37,41;
