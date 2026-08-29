@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluasi Kerja</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232383e2'/%3E%3Ctext x='50' y='70' font-size='54' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E2%9C%93%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <div class="brand"></div>
+      <div class="top-actions">
+        <button id="themeBtn" class="btn ghost">Tema Terang</button>
+        <button id="printBtn" class="btn ghost">Cetak / PDF</button>
+      </div>
+    </header>
+
+    <header class="hero">
+      <div class="hero-badge">Evaluasi Triwulanan Bagian Umum</div>
+      <h1>Kertas Kerja Evaluasi</h1>
+      
+    </header>
+
+    <section class="card">
+      <div class="sheet-head">
+        <div class="field">
+          <label for="unit">Unit Kerja</label>
+          <input id="unit" type="text" placeholder="contoh: Bagian Umum" />
+        </div>
+        <div class="field">
+          <label for="triwulan">Triwulan</label>
+          <select id="triwulan">
+            <option>Triwulan I</option>
+            <option>Triwulan II</option>
+            <option>Triwulan III</option>
+            <option>Triwulan IV</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="tahun">Tahun</label>
+          <input id="tahun" type="text" placeholder="2026" />
+        </div>
+        <div class="field">
+          <label for="penanggung">Penanggung Jawab</label>
+          <input id="penanggung" type="text" placeholder="Nama" />
+        </div>
+      </div>
+
+      <div class="table-scroll">
+        <table id="tabel">
+          <thead>
+            <tr>
+              <th class="col-no">No</th>
+              <th class="col-sub">Sub-Fungsi</th>
+              <th class="col-target">Target Kinerja / Aktivitas Utama</th>
+              <th class="col-tri">Triwulanan</th>
+              <th class="col-real">Realisasi (%)</th>
+              <th class="col-evid">Bukti Dukung (Evidence)</th>
+              <th class="col-cat">Catatan Evaluasi / Kendala</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <p class="hint" id="hint"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
